@@ -13,4 +13,12 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Krona One', 'sans-serif';
   }
+  ul {
+    margin:0;
+    padding: 0;
+    li {
+      list-style: none;
+      width: 100vw;
+    }
+  }
 `

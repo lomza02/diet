@@ -1,0 +1,17 @@
+{
+    "products": [
+      { "id": 1, "name": "marchewka", "carbs": 10, "fat": 0.2, "protein": 0.9, "kcal": 41 },
+      { "id": 2, "name": "pierś z kurczaka", "carbs": 0, "fat": 3.6, "protein": 31, "kcal": 164 },
+      { "id": 3, "name": "baton snickers", "carbs": 63, "fat": 24, "protein": 7, "kcal": 487 }
+    ],
+    "meals": [
+      { "id": 1, "date": "2020-09-03", "amount": 100, "productId": 1 },
+      { "id": 2, "date": "2020-09-04", "amount": 210, "productId": 2 },
+      { "id": 3, "date": "2020-09-05", "amount": 51, "productId": 3 },
+      { "id": 4, "date": "2020-09-03", "amount": 10, "productId": 1 },
+      { "id": 5, "date": "2020-09-04", "amount": 300, "productId": 1 },
+      { "id": 6, "date": "2020-09-05", "amount": 210, "productId": 2 },
+      { "id": 7, "date": "2020-09-03", "amount": 150, "productId": 3 },
+      { "id": 8, "date": "2020-09-04", "amount": 140, "productId": 1 }
+    ]
+  }

@@ -20,6 +20,7 @@ div {
 }
 span {
     font-size: ${props => props.theme.sizes.xl * 1.5}px;
+    cursor: pointer;
 
 }
 `

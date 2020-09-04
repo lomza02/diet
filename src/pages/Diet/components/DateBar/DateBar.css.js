@@ -5,11 +5,10 @@ export const Bar = styled.nav`
 display: flex;
 justify-content: space-evenly;
 align-items: center;
-height: 120px;
+height: 20vh;
 width: 100%;
 background-color: ${props => props.theme.colors.primary.normal};
 color: white;
-margin-bottom: ${props => props.theme.sizes.xl}px;
 
 div {
     width: 70%;

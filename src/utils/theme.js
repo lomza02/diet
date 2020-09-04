@@ -1,14 +1,12 @@
 export default {
     colors: {
         primary: {
-            normal: "#C81C29",
-            light: "#FD7882",
-            dark: "#590007"
+            dark: "#5438DC",
+            normal: "#357DED",
+            light: "#56EEF4",
         },
         accent: {
-            normal: '#A0166D',
-            light: "#F273C3",
-            dark: "#48002D"
+            normal: '#32E875',
         },
     },
     sizes: {

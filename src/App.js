@@ -1,16 +1,22 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components'
-import Diet from 'pages/Diet'
-import theme from 'utils/theme'
-
+import { ThemeProvider } from 'styled-components';
+import Diet from 'pages/Diet';
+import theme from 'utils/theme';
+import { ReactQueryConfigProvider } from 'react-query';
+import Loading from 'components/Loading';
+const queryConfig = {
+  suspense: true,
+}
 
 function App() {
   return (
+    <ReactQueryConfigProvider config={queryConfig}>
     <ThemeProvider theme={theme}>
-      <div className="App">
+    <React.Suspense fallback={<Loading/>}>
         <Diet />
-      </div>
+    </React.Suspense>
     </ThemeProvider>
+    </ReactQueryConfigProvider>
   );
 }
 

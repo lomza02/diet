@@ -1,12 +1,8 @@
 import React from 'react';
-import { AddButton } from './Button.css'
+import { Button } from './Button.css'
 
-const Button = ({ children }) => {
-
+export default ({ children, ...props }) => {
     return (
-        <AddButton>{children}</AddButton>
+        <Button {...props}>{children}</Button>
     )
 }
-
-
-export default Button

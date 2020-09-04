@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 
 
-
-export const AddButton = styled.button`
-width: 70px;
-height: 70px;
-position: fixed;
-bottom: ${props => props.theme.sizes.xl}px;
-right: ${props => props.theme.sizes.xl}px;
+export const Button = styled.button`
+display: flex;
+align-items: center;
+height: 30px;
+font-size: 16px;
+padding: ${({theme})=> theme.sizes.xl}px ${({theme})=> theme.sizes.xl}px;
 background-color: ${props => props.theme.colors.accent.dark};
 color: white;
-border-radius: 50%;
 border: none;
-font-size: 25px;
 `

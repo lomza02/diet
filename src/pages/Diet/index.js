@@ -1,3 +1,1 @@
-const { DateContextHandler } = require("./Diet")
-
-export {DateContextHandler} from './Diet'
+export { default } from './Diet'

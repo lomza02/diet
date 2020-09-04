@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Bar } from './DateBar.css';
 import { DECREASE_ONE_DAY, INCREASE_ONE_DAY } from 'utils/constants'
-import {DateContextHandler} from 'pages/Diet'
+import DateContextHandler from 'data/context';
 
 const DateBar = () => {
-    const {DateContext} = DateContextHandler;
-   const date = useContext(DateContext)
+    const {store} = DateContextHandler;
+   const date = useContext(store)
    const { activeDate,  handleActiveDate} = date;
     const {dayName, dayNumber, month, year} = activeDate;
 

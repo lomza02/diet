@@ -3,12 +3,12 @@ import {useQuery} from 'react-query';
 import API from 'data/fetch';
 import {groupBy} from 'utils/groupBy';
 import {List} from './ProductsList.css'
-import {DateContextHandler} from 'pages/Diet'
+import DateContextHandler from 'data/context';
 
 
 const ProductsList = () => {
-    const {DateContext} = DateContextHandler;
-   const date = useContext(DateContext);
+    const {store} = DateContextHandler;
+   const date = useContext(store);
    const activeDate = date.date.toISOString().substring(0,10);
     const { data: meals, isLoading: isLoadingMeals, error: errorMeals } = useQuery("meals", API.fetchMeals
     )

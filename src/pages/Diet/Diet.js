@@ -5,6 +5,7 @@ import ProductsList from 'pages/Diet/components/ProductsList';
 import DateContextHandler from 'data/context/';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Wrapper from 'components/Wrapper'
+import StatsBar from 'pages/Diet/components/StatsBar';
 
 const Diet = () => {
 const {DateContext} = DateContextHandler;
@@ -13,12 +14,12 @@ const {DateContext} = DateContextHandler;
         <DateContext>
              <DateBar />
             <Wrapper>
+            <StatsBar/>
             <ErrorBoundary>
                 <ProductsList/>
             </ErrorBoundary>
                 <PlusButton>&#10010;</PlusButton>
             </Wrapper>
-            
         </DateContext>
     );
 }

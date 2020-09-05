@@ -11,17 +11,3 @@ export function groupBy(list, keyGetter) {
     });
     return map;
 }
-
-// example usage
-
-// const pets = [
-//     {type:"Dog", name:"Spot"},
-//     {type:"Cat", name:"Tiger"},
-//     {type:"Dog", name:"Rover"}, 
-//     {type:"Cat", name:"Leo"}
-// ];
-    
-// const grouped = groupBy(pets, pet => pet.type);
-    
-// console.log(grouped.get("Dog")); // -> [{type:"Dog", name:"Spot"}, {type:"Dog", name:"Rover"}]
-// console.log(grouped.get("Cat")); // -> [{type:"Cat", name:"Tiger"}, {type:"Cat", name:"Leo"}]

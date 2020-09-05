@@ -7,6 +7,7 @@ const DateContext =  ({children}) => {
     const date = useMemo(() => new Date(), []);
     const initialDate = useCallback(() => changeDate(date), [date])
     const [activeDate, setActiveDate] = useState(initialDate)
+    
 
     const handleActiveDate = useCallback((oneDay) => {
         date.setDate(date.getDate() + oneDay);

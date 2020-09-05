@@ -7,6 +7,7 @@ export default {
         },
         accent: {
             normal: '#32E875',
+            second: '#FF7DED',
         },
     },
     sizes: {

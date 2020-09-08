@@ -1,12 +1,23 @@
-import React from 'react';
-import PieChart from 'components/Chart/Chart';
+import React, {useContext} from 'react';
+import PieChart from 'components/PieChart/PieChart';
+import {getTotalDailyValues} from 'utils/getGruppedProducts';
+import DateContextHandler from 'data/context';
+import {Bar} from './StatsBar.css';
 
 const StatsBar = () => {
-    return ( 
-        <div>
-            <PieChart data={[50, 50, 100]}/>
-        </div>
+    const {store} = DateContextHandler;
+    const data = useContext(store);
+    const {groupedProductsWithDetails} = data;
+    const total = getTotalDailyValues(groupedProductsWithDetails);
+    return (
+        <>
+        <Bar>
+            <div><span>B: {total.proteins}g</span> <span>W: {total.carbs}g</span> <span>T: {total.fats}g</span></div>
+        </Bar>
+        {total.kcals ? <PieChart data={[total.proteins, total.carbs, total.fats]}/> : null}
+        </>
      );
 }
  
 export default StatsBar;
+

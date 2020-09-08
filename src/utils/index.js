@@ -5,7 +5,9 @@ export default (date) => {
     const dayNumber = date.getDate();
     const month = months[date.getMonth()];
     const year = date.getFullYear();
+    const dateISO = date.toISOString().substring(0,10);
     return {
+        dateISO,
         dayName,
         dayNumber,
         month,

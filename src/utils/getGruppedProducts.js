@@ -1,6 +1,3 @@
-
-
-//get grouped products with details
 export const getGroupedProductsWithDetails = (groupedMeals, products) => {
     if(!groupedMeals) return [];
    const productsWithDetails = groupedMeals.map(meal => {

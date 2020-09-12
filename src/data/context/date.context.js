@@ -11,6 +11,7 @@ const DateContext =  ({children}) => {
     const date = useMemo(() => new Date(), []);
     const initialDate = useCallback(() => changeDate(date), [date])
     const [activeDate, setActiveDate] = useState(initialDate)
+    const [checkedProducts, setCheckedProducts] = useState({});
     const dateISO = useMemo(()=>activeDate.dateISO, [activeDate]);
     const { data: meals} = useQuery("meals", API.fetchMeals)
     const { data: products } = useQuery("products", API.fetchProducts);
@@ -24,7 +25,7 @@ const DateContext =  ({children}) => {
 
 
     return (
-    <store.Provider value={{handleActiveDate, activeDate, date, meals, groupedMeals, products, groupedProductsWithDetails}}>
+    <store.Provider value={{handleActiveDate, activeDate, date, meals, groupedMeals, products, groupedProductsWithDetails, setCheckedProducts, checkedProducts, dateISO}}>
        {children}
     </store.Provider>
     )

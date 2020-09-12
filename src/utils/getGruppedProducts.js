@@ -2,14 +2,18 @@ export const getGroupedProductsWithDetails = (groupedMeals, products) => {
     if(!groupedMeals) return [];
    const productsWithDetails = groupedMeals.map(meal => {
     const item = products.find(item => item.id === meal.productId);
+    const kcals = item.kcals * meal.amount/100;
+    const fats = item.fats * meal.amount/100;
+    const carbs = item.carbs * meal.amount/100;
+    const proteins = item.proteins * meal.amount/100;
     return {
         name: item.name,
         id: meal.id,
         amount: meal.amount,
-        kcals: item.kcal * meal.amount/100,
-        fats: item.fat * meal.amount/100,
-        carbs: item.carbs * meal.amount/100,
-        proteins: item.protein * meal.amount/100,
+        kcals: parseFloat(kcals.toFixed(2)),
+        fats: parseFloat(fats.toFixed(2)),
+        carbs: parseFloat(carbs.toFixed(2)),
+        proteins: parseFloat(proteins.toFixed(2)),
     }
 })
     return productsWithDetails;

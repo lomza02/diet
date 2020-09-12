@@ -12,7 +12,7 @@ const StatsBar = () => {
     return (
         <>
         <Bar>
-            <div><span>B: {total.proteins}g</span> <span>W: {total.carbs}g</span> <span>T: {total.fats}g</span></div>
+            <div><span>B: {total.proteins} g</span> <span>W: {total.carbs} g</span> <span>T: {total.fats} g</span></div>
         </Bar>
         {total.kcals ? <PieChart data={[total.proteins, total.carbs, total.fats]}/> : null}
         </>

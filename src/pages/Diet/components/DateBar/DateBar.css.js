@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 
-export const Bar = styled.nav`
+export const Bar = styled.div`
 display: flex;
 justify-content: space-evenly;
 align-items: center;
-height: 20vh;
 width: 100%;
 background-color: ${props => props.theme.colors.primary.normal};
 color: white;
-
+height: ${props => props.lower ? "10vh": "20vh"};
 div {
     width: 70%;
     h3 {

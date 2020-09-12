@@ -7,6 +7,7 @@ export default {
         },
         accent: {
             normal: '#32E875',
+            disabled: '#32e87545',
             second: '#FF7DED',
         },
     },

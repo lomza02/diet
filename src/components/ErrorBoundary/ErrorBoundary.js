@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
-import {Button} from 'components/Button';
-import Loading from 'components/Loading';
+import {Button, Loading} from 'components';
 import { refetchAllQueries } from 'react-query';
 
 class ErrorBoundary extends React.Component {

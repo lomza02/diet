@@ -14,3 +14,15 @@ flex-wrap: wrap;
 justify-content: center;
 
 `
+
+export const Form = styled.form`
+font-size: 14px;
+padding: 10px;
+
+`
+
+export const ErrorMsg = styled.div`
+font-size: 10px; 
+color: red;
+text-align: 'left';
+`

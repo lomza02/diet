@@ -3,10 +3,11 @@ import { ThemeProvider } from 'styled-components';
 import Diet from 'pages/Diet';
 import theme from 'utils/theme';
 import { ReactQueryConfigProvider } from 'react-query';
-import Loading from 'components/Loading';
+import {Loading} from 'components';
 
 const queryConfig = {
   suspense: true,
+  refetchAllOnWindowFocus: false,
 }
 
 function App() {

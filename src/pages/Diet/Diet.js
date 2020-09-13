@@ -1,16 +1,9 @@
 import React from 'react';
-import DateBar from 'pages/Diet/components/DateBar';
-import PlusButton from 'components/PlusButton';
-import ProductsList from 'pages/Diet/components/ProductsList';
+import { Button, Modal, Wrapper, ErrorBoundary, PlusButton } from 'components';
+import {DateBar, StatsBar, ProductsList, ProductForm, MealForm} from 'pages/Diet/components';
 import DateContextHandler from 'data/context/';
-import ErrorBoundary from 'components/ErrorBoundary';
-import Wrapper from 'components/Wrapper';
-import StatsBar from 'pages/Diet/components/StatsBar';
 import {Link} from 'react-router-dom';
-import Modal from 'components/Modal';
-import Form from 'components/Form';
 import {Switch, Route} from 'react-router-dom';
-import Wizard from 'components/WizardForm/WIzardForm'
 
 const Diet = () => {
 const {DateContext} = DateContextHandler;
@@ -24,22 +17,23 @@ const {DateContext} = DateContextHandler;
             <ErrorBoundary>
                 <ProductsList />
             </ErrorBoundary>
-               <Link to="/product-list"><PlusButton>&#10010;</PlusButton></Link> 
+               <Link to="/choose-action"><PlusButton>&#10010;</PlusButton></Link> 
             </Wrapper>
         <Switch>
-            <Route exact path="/product-list" >
+            <Route exact path="/add-meal" >
                 <Modal>
-                <Wizard/>
+                    <MealForm/>
                 </Modal>
             </Route>
-            <Route exact path="/add-product" >
+            <Route path="/add-product" >
                 <Modal>
-                    <Form/>
+                    <ProductForm/>
                 </Modal>
             </Route>
-            <Route exact path="/amount-products" >
-                <Modal>
-                <ProductsList/>
+            <Route path="/choose-action" >
+                <Modal small>
+                <Link to="/add-product"><Button>Dodaj produkt</Button></Link> 
+                <Link to="/add-meal"><Button>Dodaj posiłek</Button></Link>
                 </Modal>
             </Route>
       </Switch>

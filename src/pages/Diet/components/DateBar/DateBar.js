@@ -22,7 +22,7 @@ const DateBar = () => {
         </Bar>
         <Bar lower>
             <div>
-                <h3>{total.kcals} / 2000 kcal</h3>
+                <h3>{total.kcals} kcal</h3>
             </div>
         </Bar>
         </>

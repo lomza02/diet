@@ -1,19 +1,17 @@
 import React, {useContext} from 'react';
-import {ProductList, CheckList} from 'components/List';
+import {ProductList, CheckList, Button} from 'components';
 import DateContextHandler from 'data/context';
 import {Form, Field} from 'react-final-form';
-import {Button} from 'components/Button';
 import {Link} from 'react-router-dom'
 
 
 const ProductsList = ({checklist}) => {
     const {store} = DateContextHandler;
    const data = useContext(store);
-   const {groupedProductsWithDetails, products, setCheckedProducts, checkedProducts} = data;
+   const {groupedProductsWithDetails, products, setCheckedProducts} = data;
 
    const onSubmit = (values) => {
     setCheckedProducts(values)
-    console.log(checkedProducts)
    }
     return checklist ? (
       <>

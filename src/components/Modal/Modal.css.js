@@ -21,14 +21,25 @@ position: relative;
     background-color: white;
     color: black;
     font-size: 20px;
-    span {
+    div {    
         display: flex;
-        justify-content: flex-end;
         width: 100%;
+        justify-content: flex-end;
+        align-items: flex-start;
+        span {
         margin-right: ${({theme})=> theme.sizes.sm}px;
         margin-top: ${({theme})=> theme.sizes.xs}px;
         font-size: 25px;
-
+        cursor: pointer;
+        }
     }
+`
 
+export const SmallModal = styled(Modal)`
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 30vh;
 `

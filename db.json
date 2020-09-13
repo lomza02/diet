@@ -39,6 +39,14 @@
       "name": "Ziemniak",
       "proteins": 12,
       "id": 5
+    },
+    {
+      "carbs": 15,
+      "fats": 1,
+      "kcals": 29,
+      "name": "Brokuły",
+      "proteins": 9,
+      "id": 6
     }
   ],
   "meals": [
@@ -103,9 +111,9 @@
       "id": 10
     },
     {
-      "amount": "33",
-      "productId": 1,
-      "date": "2020-09-14",
+      "amount": "100",
+      "productId": 3,
+      "date": "2020-09-13",
       "id": 11
     }
   ]

@@ -13,6 +13,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Krona One', 'sans-serif';
   }
+  a {
+    text-decoration: none;
+  }
   ul {
     margin:0;
     padding: 0;

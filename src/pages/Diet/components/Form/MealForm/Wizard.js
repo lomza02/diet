@@ -2,8 +2,9 @@ import React, {useState, useContext} from 'react'
 import DateContextHandler from 'data/context';
 import PropTypes from 'prop-types';
 import { Form } from 'react-final-form';
-import {Button} from 'components/Button';
-import {ButtonWrapper, FormWrapper} from './WizardForm.css';
+import {Button} from 'components';
+import {ButtonWrapper, FormWrapper} from '../Form.css';
+import {STRING_PROVIDER} from 'utils/constants';
 
 const Wizard  = (props) => {
   const [page, setPage] = useState(0);
@@ -38,7 +39,7 @@ const Wizard  = (props) => {
      const validateValues = (productsIndexArray) => {
     const checkedProducts = productsIndexArray.map(checked => products.find(product => product.id === checked));
     const validatedArrayOfProductsWithAmounts = [];
-    Object.entries(values).forEach(item => checkedProducts.forEach(product => item[0] === product.name 
+    Object.entries(values).forEach(item => checkedProducts.forEach(product => item[0] === product.name  +  STRING_PROVIDER
       ? 
       validatedArrayOfProductsWithAmounts.push({amount: item[1], productId: product.id, date: dateISO}) 
       : 

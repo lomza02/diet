@@ -10,16 +10,18 @@ const fetchProducts = async() => {
 }
 
 const sendProducts = async(values) => {
-    const kcal = parseFloat(values.kcal);
-    const fat = parseFloat(values.fat);
+  console.log(values)
+    const kcals = parseFloat(values.kcals);
+    const fats = parseFloat(values.fats);
     const carbs = parseFloat(values.carbs);
-    const protein = parseFloat(values.protein);
+    const proteins = parseFloat(values.proteins);
+    console.log("kcal", kcals, fats, carbs, proteins)
     const data = {
       carbs: parseFloat(carbs.toFixed(2)),
-      fat: parseFloat(fat.toFixed(2)),
-      kcal: parseFloat(kcal.toFixed(2)),
+      fats: parseFloat(fats.toFixed(2)),
+      kcals: parseFloat(kcals.toFixed(2)),
       name: values.name,
-      protein: parseFloat(protein.toFixed(2)),
+      proteins: parseFloat(proteins.toFixed(2)),
     };
     const response = await fetch(`${process.env.REACT_APP_API_ADRESS}/products`, {
       method: 'POST',

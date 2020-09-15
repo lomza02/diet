@@ -5,17 +5,15 @@ import {Background, Modal as Content, SmallModal} from './Modal.css';
 
 const Modal = (props) => {
     const history = useHistory()
-    const handlePreviousPage = () => {
-        history.goBack()
+    const handleMainPage = () => {
+        history.push('/');
     }
     return props.small ? ReactDOM.createPortal(
-        <Background 
-        onClick={handlePreviousPage}
-        >
+        <Background>
         <SmallModal
         onClick={e => e.stopPropagation()}
         >
-                <div><span onClick={handlePreviousPage}>&times;</span></div>
+                <div><span onClick={handleMainPage}>&times;</span></div>
                 <div>
                     {props.children}
                 </div>
@@ -23,12 +21,12 @@ const Modal = (props) => {
         </Background>, document.querySelector('#modal')
     ) : ReactDOM.createPortal(
         <Background 
-        onClick={handlePreviousPage}
+        onClick={handleMainPage}
         >
         <Content
         onClick={e => e.stopPropagation()}
         >
-                <div><span onClick={handlePreviousPage}>&times;</span></div>
+                <div><span onClick={handleMainPage}>&times;</span></div>
                 <div>
                     {props.children}
                 </div>

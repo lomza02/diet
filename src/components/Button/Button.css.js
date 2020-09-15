@@ -18,3 +18,4 @@ margin: ${(props)=> props.theme.sizes.xl}px;
     background-color: ${props => props.theme.colors.accent.disabled};
 };
 `
+

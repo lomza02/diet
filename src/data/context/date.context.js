@@ -10,7 +10,8 @@ const store = React.createContext({});
 const DateContext =  ({children}) => {
     const date = useMemo(() => new Date(), []);
     const initialDate = useCallback(() => changeDate(date), [date])
-    const [activeDate, setActiveDate] = useState(initialDate)
+    const [activeDate, setActiveDate] = useState(initialDate);
+    const [selectedMeal, setSelectedMeal] = useState(null);
     const [checkedProducts, setCheckedProducts] = useState({});
     const dateISO = useMemo(()=>activeDate.dateISO, [activeDate]);
     const { data: meals} = useQuery("meals", API.fetchMeals)
@@ -21,11 +22,16 @@ const DateContext =  ({children}) => {
     const handleActiveDate = useCallback((oneDay) => {
         date.setDate(date.getDate() + oneDay);
         setActiveDate(changeDate(date))
-    }, [date])
+    }, [date]);
+    
+
 
 
     return (
-    <store.Provider value={{handleActiveDate, activeDate, date, meals, groupedMeals, products, groupedProductsWithDetails, setCheckedProducts, checkedProducts, dateISO}}>
+    <store.Provider value={{
+        activeDate, date, meals, groupedMeals, products, groupedProductsWithDetails, checkedProducts, dateISO, selectedMeal,
+        setSelectedMeal, handleActiveDate, setCheckedProducts
+        }}>
        {children}
     </store.Provider>
     )

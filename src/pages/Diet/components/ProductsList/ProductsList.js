@@ -2,17 +2,28 @@ import React, {useContext} from 'react';
 import {ProductList, CheckList, Button} from 'components';
 import DateContextHandler from 'data/context';
 import {Form, Field} from 'react-final-form';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {useLongPress} from 'data/hooks/useLongPress';
+import { useHistory } from "react-router-dom";
 
-
-const ProductsList = ({checklist}) => {
+const ProductsList = (props, {checklist}) => {
     const {store} = DateContextHandler;
    const data = useContext(store);
-   const {groupedProductsWithDetails, products, setCheckedProducts} = data;
-
-   const onSubmit = (values) => {
-    setCheckedProducts(values)
+   const {groupedProductsWithDetails, products, setCheckedProducts, setSelectedMeal} = data;
+  const history = useHistory()
+   const onSubmit = () => {
+    setCheckedProducts(props.key)
    }
+
+const longPressProps = useLongPress({
+  onLongPress: (currentTarget) => {
+    const ListItemId = currentTarget.value;
+    setSelectedMeal(ListItemId);
+    history.push('/remove-meal');
+  }
+});
+
+
     return checklist ? (
       <>
     <Form
@@ -36,12 +47,14 @@ const ProductsList = ({checklist}) => {
 ) : (
 <ProductList>
     {groupedProductsWithDetails.map(item => {
-    return <li key={item.id}>
+    // return <li key={item.id} value={item.id} onTouchStart={handleEventTarget}>
+    return <li key={item.id} {...longPressProps} value={item.id} >
     {item.name} 
     <div><div>{item.amount} g</div><div>{item.kcals} kcal</div></div>
     <div><div>B: {item.proteins} g</div><div>W: {item.carbs} g</div><div>T: {item.fats} g</div></div>
     </li>})}
 </ProductList> 
+
 )
 }
  

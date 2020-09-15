@@ -1,16 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Button, Modal, Wrapper, ErrorBoundary, PlusButton } from 'components';
-import {DateBar, StatsBar, ProductsList, ProductForm, MealForm} from 'pages/Diet/components';
-import DateContextHandler from 'data/context/';
+import {DateBar, StatsBar, ProductsList, ProductForm, MealForm, EditMealForm} from 'pages/Diet/components';
 import {Link} from 'react-router-dom';
 import {Switch, Route} from 'react-router-dom';
+import DateContextHandler from 'data/context';
+import {useMutation} from 'react-query';
+import API from 'data/fetch';
+
 
 const Diet = () => {
-const {DateContext} = DateContextHandler;
-
+  const {store} = DateContextHandler;
+  const data = useContext(store);
+  const {selectedMeal} = data;
+  const [mutate] = useMutation(API.removeMeal, {
+    refetchQueries: ['meals']
+  });
+  const handleRemoveMeal = async() => {
+    try {
+        await mutate(selectedMeal);
+      } catch (error) {
+        console.log(error)
+      }
+}
     return (
         <>
-        <DateContext>
              <DateBar />
             <Wrapper>
             <StatsBar/>
@@ -30,14 +43,33 @@ const {DateContext} = DateContextHandler;
                     <ProductForm/>
                 </Modal>
             </Route>
+            <Route path="/edit-meal" >
+                <Modal>
+                    <EditMealForm/>
+                </Modal>
+            </Route>
             <Route path="/choose-action" >
                 <Modal small>
+                <div style={{display: 'flex',
+                    justifyContent: 'center'
+                }}>
                 <Link to="/add-product"><Button>Dodaj produkt</Button></Link> 
                 <Link to="/add-meal"><Button>Dodaj posiłek</Button></Link>
+                </div>
+                </Modal>
+            </Route>
+            <Route path="/remove-meal" >
+                <Modal small>
+                    <div style={{display: 'flex',
+                    justifyContent: 'center'
+                }}>
+                        <Button onClick={handleRemoveMeal}>Usuń</Button>
+                        <Link to="/edit-meal"><Button>Edytuj</Button></Link>
+                    </div>
+
                 </Modal>
             </Route>
       </Switch>
-      </DateContext>
           </>
     );
 }

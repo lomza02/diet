@@ -41,7 +41,26 @@ export const sendMeal = async(data) => {
   },
   body: JSON.stringify(data),
   });
-  return response.json()
+  return response.json();
+}
+
+export const editMeal = async(data) => {
+  const {values, id} = data;
+const response = await fetch(`${process.env.REACT_APP_API_ADRESS}/meals/${id}`, {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(values),
+})
+return response.json();
+}
+
+export const removeMeal = async(id)=> {
+  const response = await fetch(`${process.env.REACT_APP_API_ADRESS}/meals/${id}`, {
+  method: 'DELETE',
+})
+return response.json();
 }
 
 
@@ -50,5 +69,7 @@ export default {
     fetchMeals,
     fetchProducts,
     sendProducts,
-    sendMeal
+    sendMeal,
+    removeMeal,
+    editMeal
 }

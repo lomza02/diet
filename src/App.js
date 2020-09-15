@@ -4,6 +4,7 @@ import Diet from 'pages/Diet';
 import theme from 'utils/theme';
 import { ReactQueryConfigProvider } from 'react-query';
 import {Loading} from 'components';
+import DateContextHandler from 'data/context/';
 
 const queryConfig = {
   suspense: true,
@@ -11,10 +12,13 @@ const queryConfig = {
 }
 
 function App() {
+  const {DateContext} = DateContextHandler;
   return (
+    <DateContext>
     <Fragment>
         <Diet />
     </Fragment>
+    </DateContext>
   );
 }
 

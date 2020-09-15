@@ -36,7 +36,6 @@ export default () => {
         await mutate(value)
         history.push('/choose-action');
       } catch(error) {
-        console.log(error);
       }
     })
   }
@@ -47,7 +46,6 @@ const getProductsById = (checkedProducts) => {
   return checked;
 }
 const checked = getProductsById(checkedProducts) || [];
-console.log(Wizard)
 
   return (
     <>

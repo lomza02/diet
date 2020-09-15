@@ -51,70 +51,34 @@
   ],
   "meals": [
     {
-      "id": 1,
-      "date": "2020-09-11",
-      "amount": 100,
-      "productId": 1
-    },
-    {
-      "id": 2,
-      "date": "2020-09-13",
-      "amount": 210,
-      "productId": 2
-    },
-    {
-      "id": 3,
-      "date": "2020-09-13",
-      "amount": 51,
-      "productId": 3
-    },
-    {
-      "id": 4,
-      "date": "2020-09-12",
-      "amount": 10,
-      "productId": 1
-    },
-    {
-      "id": 5,
-      "date": "2020-09-12",
-      "amount": 300,
-      "productId": 1
-    },
-    {
-      "id": 6,
-      "date": "2020-09-11",
-      "amount": 210,
-      "productId": 2
-    },
-    {
-      "id": 7,
-      "date": "2020-09-11",
-      "amount": 150,
-      "productId": 3
-    },
-    {
       "id": 8,
-      "date": "2020-09-11",
+      "date": "2020-09-16",
       "amount": 140,
       "productId": 1
     },
     {
       "amount": "200",
       "productId": 2,
-      "date": "2020-09-12",
+      "date": "2020-09-16",
       "id": 9
     },
     {
       "amount": "100",
       "productId": 3,
-      "date": "2020-09-12",
+      "date": "2020-09-16",
       "id": 10
     },
     {
-      "amount": "100",
-      "productId": 3,
-      "date": "2020-09-13",
+      "amount": 321,
+      "productId": 2,
+      "date": "2020-09-15",
       "id": 11
+    },
+    {
+      "amount": 223,
+      "productId": 5,
+      "date": "2020-09-15",
+      "id": 12
     }
   ]
 }

@@ -3,8 +3,8 @@ import { ThemeProvider } from 'styled-components';
 import Diet from 'pages/Diet';
 import theme from 'utils/theme';
 import { ReactQueryConfigProvider } from 'react-query';
-import {Loading} from 'components';
-import DateContextHandler from 'data/context/';
+import {ErrorBoundary} from 'components';
+import DataContextHandler from 'data/context/';
 
 const queryConfig = {
   suspense: true,
@@ -12,13 +12,13 @@ const queryConfig = {
 }
 
 function App() {
-  const {DateContext} = DateContextHandler;
+  const {DataContext} = DataContextHandler;
   return (
-    <DateContext>
+    <DataContext>
     <Fragment>
         <Diet />
     </Fragment>
-    </DateContext>
+    </DataContext>
   );
 }
 
@@ -27,9 +27,9 @@ const RootApp = () => {
   return ( 
     <ReactQueryConfigProvider config={queryConfig}>
     <ThemeProvider theme={theme}>
-      <React.Suspense fallback={<Loading/>}>
+      <ErrorBoundary>
         <App/>
-      </React.Suspense>
+      </ErrorBoundary>
      </ThemeProvider>
     </ReactQueryConfigProvider>
    );

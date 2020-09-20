@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Bar } from './DateBar.css';
+import { Bar } from './NavigationBar.css';
 import { DECREASE_ONE_DAY, INCREASE_ONE_DAY } from 'utils/constants'
 import DateContextHandler from 'data/context';
 import {getTotalDailyValues} from 'utils/getGruppedProducts';

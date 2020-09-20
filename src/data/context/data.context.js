@@ -7,7 +7,7 @@ import {getGroupedProductsWithDetails} from 'utils/getGruppedProducts';
 
 const store = React.createContext({});
 
-const DateContext =  ({children}) => {
+const DataContext =  ({children}) => {
     const date = useMemo(() => new Date(), []);
     const initialDate = useCallback(() => changeDate(date), [date])
     const [activeDate, setActiveDate] = useState(initialDate);
@@ -38,9 +38,9 @@ const DateContext =  ({children}) => {
 }
 
 
-const DateContextHandler = {
+const DataContextHandler = {
     store,
-    DateContext
+    DataContext
 }
 
-export default DateContextHandler;
+export default DataContextHandler;

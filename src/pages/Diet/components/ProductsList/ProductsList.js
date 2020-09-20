@@ -14,7 +14,6 @@ const ProductsList = (props, {checklist}) => {
    const onSubmit = () => {
     setCheckedProducts(props.key)
    }
-
 const longPressProps = useLongPress({
   onLongPress: (currentTarget) => {
     const ListItemId = currentTarget.value;
@@ -46,13 +45,12 @@ const longPressProps = useLongPress({
    </>
 ) : (
 <ProductList>
-    {groupedProductsWithDetails.map(item => {
-    // return <li key={item.id} value={item.id} onTouchStart={handleEventTarget}>
+    {groupedProductsWithDetails.length !== 0 ? groupedProductsWithDetails.map(item => {
     return <li key={item.id} {...longPressProps} value={item.id} >
     {item.name} 
     <div><div>{item.amount} g</div><div>{item.kcals} kcal</div></div>
     <div><div>B: {item.proteins} g</div><div>W: {item.carbs} g</div><div>T: {item.fats} g</div></div>
-    </li>})}
+    </li>}): <div>Lista posiłków jest pusta...</div>}
 </ProductList> 
 
 )

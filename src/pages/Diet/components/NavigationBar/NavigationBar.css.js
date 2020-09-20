@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { device } from 'utils/device'; 
 
 export const Bar = styled.div`
 display: flex;
@@ -14,11 +14,17 @@ div {
     h3 {
         font-size: ${props => props.theme.sizes.sm * 1.5}px;
         text-align: center;
+        @media ${device.tablet} { 
+        font-size: ${props => props.theme.sizes.sm * 2.2}px;
+  }
     }
 }
 span {
     font-size: ${props => props.theme.sizes.xl * 1.5}px;
     cursor: pointer;
+    @media ${device.tablet} { 
+        font-size: ${props =>  props.theme.sizes.xl * 2.2}px;
+  }
 
 }
 `

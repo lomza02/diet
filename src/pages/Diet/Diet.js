@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { Button, Modal, Wrapper, ErrorBoundary, PlusButton } from 'components';
-import {DateBar, StatsBar, ProductsList, ProductForm, MealForm, EditMealForm} from 'pages/Diet/components';
+import {NavigationBar, ProductsList, ProductForm, MealForm, EditMealForm, ChartSection} from 'pages/Diet/components';
 import {Link} from 'react-router-dom';
 import {Switch, Route} from 'react-router-dom';
 import DateContextHandler from 'data/context';
@@ -24,12 +24,10 @@ const Diet = () => {
 }
     return (
         <>
-             <DateBar />
+        <NavigationBar />
             <Wrapper>
-            <StatsBar/>
-            <ErrorBoundary>
+            <ChartSection/>
                 <ProductsList />
-            </ErrorBoundary>
                <Link to="/choose-action"><PlusButton>&#10010;</PlusButton></Link> 
             </Wrapper>
         <Switch>
@@ -63,7 +61,7 @@ const Diet = () => {
                     <div style={{display: 'flex',
                     justifyContent: 'center'
                 }}>
-                        <Button onClick={handleRemoveMeal}>Usuń</Button>
+                        <Button red onClick={handleRemoveMeal}>Usuń</Button>
                         <Link to="/edit-meal"><Button>Edytuj</Button></Link>
                     </div>
 

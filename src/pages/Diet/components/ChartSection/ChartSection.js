@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {PieChart} from 'components';
 import {getTotalDailyValues} from 'utils/getGruppedProducts';
 import DateContextHandler from 'data/context';
-import {Bar} from './StatsBar.css';
+import {Bar} from './ChartSection.css';
 
 const StatsBar = () => {
     const {store} = DateContextHandler;

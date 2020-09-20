@@ -9,7 +9,7 @@ div {
     text-align: center;
     margin-bottom: ${({theme})=> theme.sizes.xl}px;
     span {
-        width: 33.33%;
+       font-size: 12px;
     }
     span:nth-child(1) {
        margin: 5px; 
@@ -24,4 +24,4 @@ div {
        border-bottom: 10px solid ${({theme})=> theme.colors.accent.second};
     }
 }
-`;
+`

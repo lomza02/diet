@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Chart from "chart.js";
 import 'chartjs-plugin-labels';
-import theme from 'utils/theme'
+import theme from 'utils/theme';
 
 Chart.defaults.global.legend.display = false;
 
@@ -36,7 +36,7 @@ const PieChart = ({data}) => {
                   showZero: true,
           
                   // font size, default is defaultFontSize
-                  fontSize: 18,
+                  fontSize: 14,
           
                   // font color, can be color array for each data or function for dynamic color, default is defaultFontColor
                   fontColor: 'black',

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {device} from 'utils/device';
 
 export const Bar = styled.div`
 display: flex;
@@ -24,4 +25,16 @@ div {
        border-bottom: 10px solid ${({theme})=> theme.colors.accent.second};
     }
 }
+`
+
+export const  Wrapper = styled.div`
+display: flex;
+justify-content: center;
+@media ${device.tablet} {
+   div {
+   width: 500px;
+}
+}
+
+
 `

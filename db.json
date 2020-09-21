@@ -52,32 +52,32 @@
   "meals": [
     {
       "id": 8,
-      "date": "2020-09-16",
+      "date": "2020-09-22",
       "amount": 140,
       "productId": 1
     },
     {
       "amount": "200",
       "productId": 2,
-      "date": "2020-09-16",
+      "date": "2020-09-22",
       "id": 9
     },
     {
       "amount": 22,
       "productId": 3,
-      "date": "2020-09-16",
+      "date": "2020-09-21",
       "id": 10
     },
     {
       "amount": 321,
       "productId": 2,
-      "date": "2020-09-15",
+      "date": "2020-09-21",
       "id": 11
     },
     {
       "amount": 223,
       "productId": 5,
-      "date": "2020-09-15",
+      "date": "2020-09-21",
       "id": 12
     }
   ]

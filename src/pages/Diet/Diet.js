@@ -1,17 +1,23 @@
 import React, {useContext} from 'react';
-import { Button, Modal, Wrapper, ErrorBoundary, PlusButton } from 'components';
-import {NavigationBar, ProductsList, ProductForm, MealForm, EditMealForm, ChartSection} from 'pages/Diet/components';
+import { Button, Modal, Wrapper, PlusButton} from 'components';
+import {ActionSection, NavigationBar, ProductsList, ProductForm, MealForm, EditMealForm, ChartSection} from 'pages/Diet/components';
 import {Link} from 'react-router-dom';
 import {Switch, Route} from 'react-router-dom';
 import DateContextHandler from 'data/context';
 import {useMutation} from 'react-query';
 import API from 'data/fetch';
+import {useWindowSize} from 'data/hooks/useWindowSize';
+import {useArrowPress} from 'data/hooks/useArrowPress';
+import {DESKTOP_WIDTH} from 'utils/constants';
 
 
 const Diet = () => {
+    const size = useWindowSize();
   const {store} = DateContextHandler;
   const data = useContext(store);
   const {selectedMeal} = data;
+    useArrowPress('ArrowRight');
+
   const [mutate] = useMutation(API.removeMeal, {
     refetchQueries: ['meals']
   });
@@ -26,9 +32,10 @@ const Diet = () => {
         <>
         <NavigationBar />
             <Wrapper>
+            {size.width > DESKTOP_WIDTH ? <ActionSection/> : null}
             <ChartSection/>
                 <ProductsList />
-               <Link to="/choose-action"><PlusButton>&#10010;</PlusButton></Link> 
+               {size.width <= DESKTOP_WIDTH ? <Link to="/choose-action"><PlusButton>&#10010;</PlusButton></Link> : null} 
             </Wrapper>
         <Switch>
             <Route exact path="/add-meal" >

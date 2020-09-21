@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { device } from 'utils/device'; 
 
 export const Background = styled.div`
 position: fixed;
@@ -33,6 +33,13 @@ position: relative;
         cursor: pointer;
         }
     }
+    @media ${device.tablet} {
+        top: 50vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: auto;
+  }
 `
 
 export const SmallModal = styled(Modal)`

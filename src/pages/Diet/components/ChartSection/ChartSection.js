@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 import {PieChart} from 'components';
 import {getTotalDailyValues} from 'utils/getGruppedProducts';
 import DateContextHandler from 'data/context';
-import {Bar} from './ChartSection.css';
+import {Bar, Wrapper} from './ChartSection.css';
 
-const StatsBar = () => {
+const ChartSection = () => {
     const {store} = DateContextHandler;
     const data = useContext(store);
     const {groupedProductsWithDetails} = data;
@@ -14,10 +14,10 @@ const StatsBar = () => {
         <Bar>
             <div><span>B: {total.proteins} g</span> <span>W: {total.carbs} g</span> <span>T: {total.fats} g</span></div>
         </Bar>
-        {total.kcals ? <PieChart data={[total.proteins, total.carbs, total.fats]}/> : null}
+        {total.kcals ? <Wrapper><div><PieChart data={[total.proteins, total.carbs, total.fats]}/></div></Wrapper> : null}
         </>
      );
 }
  
-export default StatsBar;
+export default ChartSection;
 

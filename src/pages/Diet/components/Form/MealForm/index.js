@@ -1,4 +1,4 @@
-import React, {useContext}  from 'react';
+import React, {useContext, useState}  from 'react';
 import DateContextHandler from 'data/context';
 import {CheckList, InputList} from 'components';
 import { Field } from 'react-final-form';
@@ -27,6 +27,7 @@ export default () => {
   const {store} = DateContextHandler;
   const data = useContext(store);
   const {products, checkedProducts} = data;
+  const [filtredProducts, setFiltredProducts] = useState(products);
   const [mutate] = useMutation(API.sendMeal, { refetchQueries: ['meals']})
 
   const onSubmit = async values => {
@@ -46,7 +47,11 @@ const getProductsById = (checkedProducts) => {
   return checked;
 }
 const checked = getProductsById(checkedProducts) || [];
-
+const handleProductsFilter = (event) => {
+const inputValue = event.target.value;
+const filtredProductsArray = products.filter(product => product.name.includes(inputValue))
+setFiltredProducts(filtredProductsArray)
+}
   return (
     <>
       <Wizard
@@ -54,15 +59,16 @@ const checked = getProductsById(checkedProducts) || [];
       onSubmit={onSubmit}
       >
       <Wizard.Page>
-          <CheckList>
-            {products.map(item => {
+        <input type="text" onChange={handleProductsFilter}/>          
+        <CheckList>
+            {filtredProducts.map(item => {
               return <Field 
               name="products" 
               type="checkbox" 
               key={item.id} 
               value={item.id}>
                 {({ input, meta }) => (
-                  <li >{item.name} <input  {...input}/></li>
+                  <li >{item.name} <input {...input}/></li>
                 )}
               </Field>})}
           </CheckList>

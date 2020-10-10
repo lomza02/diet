@@ -56,7 +56,7 @@ const history = useHistory()
 
           </>
             <ButtonWrapper>
-              <Button type="submit">Edytuj</Button>
+              <Button type="submit">Zapisz</Button>
             </ButtonWrapper>
           </FormWrapper>
         )}

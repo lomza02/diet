@@ -10,12 +10,10 @@ const fetchProducts = async() => {
 }
 
 const sendProducts = async(values) => {
-  console.log(values)
     const kcals = parseFloat(values.kcals);
     const fats = parseFloat(values.fats);
     const carbs = parseFloat(values.carbs);
     const proteins = parseFloat(values.proteins);
-    console.log("kcal", kcals, fats, carbs, proteins)
     const data = {
       carbs: parseFloat(carbs.toFixed(2)),
       fats: parseFloat(fats.toFixed(2)),

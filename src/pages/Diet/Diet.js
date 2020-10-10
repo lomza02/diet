@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useCallback} from 'react';
 import { Button, Modal, Wrapper, PlusButton} from 'components';
 import {ActionSection, NavigationBar, ProductsList, ProductForm, MealForm, EditMealForm, ChartSection} from 'pages/Diet/components';
 import {Link} from 'react-router-dom';
@@ -9,25 +9,26 @@ import API from 'data/fetch';
 import {useWindowSize} from 'data/hooks/useWindowSize';
 import {useArrowPress} from 'data/hooks/useArrowPress';
 import {DESKTOP_WIDTH} from 'utils/constants';
-
+import { useHistory } from "react-router-dom";
 
 const Diet = () => {
-    const size = useWindowSize();
+    const history = useHistory()
+  const size = useWindowSize();
   const {store} = DateContextHandler;
   const data = useContext(store);
   const {selectedMeal} = data;
-    useArrowPress('ArrowRight');
-
+    useArrowPress()
   const [mutate] = useMutation(API.removeMeal, {
     refetchQueries: ['meals']
   });
-  const handleRemoveMeal = async() => {
+  const handleRemoveMeal = useCallback(async() => {
     try {
         await mutate(selectedMeal);
+        history.push('/');
       } catch (error) {
         console.log(error)
       }
-}
+}, [selectedMeal, mutate])
     return (
         <>
         <NavigationBar />

@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {PieChart} from 'components';
 import {getTotalDailyValues} from 'utils/getGruppedProducts';
-import DateContextHandler from 'data/context';
+import DataContextHandler from 'data/context';
 import {Bar, Wrapper} from './ChartSection.css';
 
 const ChartSection = () => {
-    const {store} = DateContextHandler;
+    const {store} = DataContextHandler;
     const data = useContext(store);
     const {groupedProductsWithDetails} = data;
-    const total = getTotalDailyValues(groupedProductsWithDetails);
+    const total = useMemo(()=>getTotalDailyValues(groupedProductsWithDetails), [groupedProductsWithDetails]);
     return (
         <>
         <Bar>

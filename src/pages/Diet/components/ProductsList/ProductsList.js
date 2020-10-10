@@ -27,7 +27,8 @@ const longPressProps = useLongPress({
       <>
     <Form
     onSubmit={onSubmit}
-    render={({ handleSubmit }) => (
+    render={({ handleSubmit }) => 
+    (
     <form onSubmit={handleSubmit}>
     <CheckList>
         {products.map(item => {

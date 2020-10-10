@@ -22,7 +22,7 @@ const kcalsRequired = value => (value ? undefined : 'Podaj liczbę kalorii');
 
 const AddProductForm = () => {
 const [mutate] = useMutation(API.sendProducts, {refetchQueries: ['products']});
-const history = useHistory()
+const history = useHistory();
     const onSubmit = async(values, form) => {
       try {
         mutate(values);
@@ -30,6 +30,9 @@ const history = useHistory()
       } catch (error) {
         console.log(error);
       }
+    }
+    const goToMainOptions = () => {
+      history.push('/choose-action');
     }
     return (
         <Form
@@ -89,6 +92,7 @@ const history = useHistory()
             </li> 
             </InputList>
             <ButtonWrapper>
+            <Button type="button" onClick={goToMainOptions}>Wróć</Button>
               <Button type="submit">Dodaj</Button>
             </ButtonWrapper>
           </Content>

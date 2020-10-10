@@ -5,6 +5,7 @@ import { Form } from 'react-final-form';
 import {Button} from 'components';
 import {ButtonWrapper, FormWrapper} from '../Form.css';
 import {STRING_PROVIDER} from 'utils/constants';
+import { useHistory } from "react-router-dom";
 
 const Wizard  = (props) => {
   const [page, setPage] = useState(0);
@@ -12,7 +13,7 @@ const Wizard  = (props) => {
   const {store} = DateContextHandler;
   const data = useContext(store);
   const {setCheckedProducts, products, dateISO} = data;
-
+const history = useHistory();
   const next = values => {
     setPage(Math.min(page + 1, props.children.length - 1));
     if(page === 0) {
@@ -21,7 +22,9 @@ const Wizard  = (props) => {
   }
 
   const previous = () => setPage(Math.max(page - 1, 0));
-
+const goToMainOptions = () => {
+  history.push('/choose-action');
+}
   const validate = values => {
     const activePage = React.Children.toArray(props.children)[
       page
@@ -76,11 +79,8 @@ if(productsIndexArray) {
           <FormWrapper onSubmit={handleSubmit}>
             {activePage}
             <ButtonWrapper>
-              {page > 0 && (
-                <Button type="button" onClick={previous}>
-                  Wróć
-                </Button>
-              )}
+            {page === 0 && <Button type="button" onClick={goToMainOptions}>Wróć</Button>}
+              {page > 0 && <Button type="button" onClick={previous}>Wróć</Button>}
               {!isLastPage &&  <Button type="submit" disabled={isBtnDisabled(values)}>Dalej</Button>}
               {isLastPage && (
                 <Button type="submit" disabled={submitting}>

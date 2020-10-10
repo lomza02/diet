@@ -59,8 +59,8 @@ const Diet = () => {
                 <div style={{display: 'flex',
                     justifyContent: 'center'
                 }}>
-                <Link to="/add-product"><Button>Dodaj produkt</Button></Link> 
-                <Link to="/add-meal"><Button>Dodaj posiłek</Button></Link>
+                <Link to="/add-product"><Button>Nowy produkt</Button></Link> 
+                <Link to="/add-meal"><Button>Moje produkty</Button></Link>
                 </div>
                 </Modal>
             </Route>

@@ -20,7 +20,7 @@ const Error = ({ name }) => (
   />
 )
 
-const required = value => (value ? undefined : 'Uzupełnij wagę w gramach');
+const required = value => (value ? undefined : 'Wpisz liczbę');
 
 export default () => {
   const history = useHistory()
@@ -34,7 +34,9 @@ export default () => {
     values.forEach( async (value) => {
       if(parseFloat(value.amount) <= 0) return;
       try {
-        await mutate(value)
+        const toNumber = parseFloat(value.amount).toFixed(2);;
+        value.amount = parseFloat(toNumber);
+        await mutate(value);
         history.push('/choose-action');
       } catch(error) {
       }
@@ -48,8 +50,11 @@ const getProductsById = (checkedProducts) => {
 }
 const checked = getProductsById(checkedProducts) || [];
 const handleProductsFilter = (event) => {
-const inputValue = event.target.value;
-const filtredProductsArray = products.filter(product => product.name.includes(inputValue))
+const inputValue = event.target.value.toLowerCase();
+const filtredProductsArray = products.filter(product => {
+  const productToLowerCase = product.name.toLowerCase();
+ return productToLowerCase.includes(inputValue);
+})
 setFiltredProducts(filtredProductsArray)
 }
   return (

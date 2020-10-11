@@ -41,7 +41,7 @@ const history = useHistory()
         render={({ handleSubmit }) => (
           <FormWrapper onSubmit={handleSubmit}>
           <>
-        <div style={{textAlign: 'center', marginTop: '5px'}}>Wpisz nową wagę w gramach (g)</div>
+        <div style={{textAlign: 'center', marginTop: '5px'}}>Wpisz wagę w gramach (g)</div>
         <InputList>
         <li>
         <Field 

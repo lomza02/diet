@@ -8,7 +8,7 @@ const ActionSection = () => {
 <Wrapper>
 <div>
     <Link to="/add-product"><Button>Dodaj produkt</Button></Link> 
-    <Link to="/add-meal"><Button>Dodaj posiłek</Button></Link>
+    <Link to="/add-meal"><Button>Wybierz z listy</Button></Link>
 </div>
 </Wrapper>
      );

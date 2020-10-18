@@ -61,12 +61,21 @@ export const removeMeal = async(id)=> {
 return response.json();
 }
 
+export const removeProduct = async(id)=> {
+  const response = await fetch(`${process.env.REACT_APP_API_ADRESS}/products/${id}`, {
+  method: 'DELETE',
+})
+return response.json();
+}
+
+
 
 
 export default {
     fetchMeals,
     fetchProducts,
     sendProducts,
+    removeProduct,
     sendMeal,
     removeMeal,
     editMeal

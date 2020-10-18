@@ -5,4 +5,4 @@ export default ({ children, ...props }) => {
     return (
         <Button {...props}>{children}</Button>
     )
-}
+};

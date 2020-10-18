@@ -1,3 +1,2 @@
-export {default as MealForm} from './MealForm';
-export { default as ProductForm} from './ProductForm';
-export { default as EditMealForm} from './EditMealForm';
+export {default as Form} from './Form';
+export {default as EditProduct} from './EditProduct';

@@ -3,34 +3,32 @@ import { ThemeProvider } from 'styled-components';
 import Diet from 'pages/Diet';
 import theme from 'utils/theme';
 import { ReactQueryConfigProvider } from 'react-query';
-import {ErrorBoundary} from 'components';
-import DataContextHandler from 'data/context/';
-
+import { ErrorBoundary } from 'components';
+import DataContextHandler from 'data/context';
 const queryConfig = {
   suspense: true,
   refetchAllOnWindowFocus: false,
-}
+};
 
 function App() {
-  const {DataContext} = DataContextHandler;
+  const { DataContext } = DataContextHandler;
   return (
     <DataContext>
-        <Diet />
+      <Diet />
     </DataContext>
   );
 }
 
-
 const RootApp = () => {
-  return ( 
+  return (
     <ReactQueryConfigProvider config={queryConfig}>
-    <ThemeProvider theme={theme}>
-      <ErrorBoundary>
-        <App/>
-      </ErrorBoundary>
-     </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </ThemeProvider>
     </ReactQueryConfigProvider>
-   );
-}
- 
+  );
+};
+
 export default RootApp;

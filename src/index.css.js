@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
-import Krona from 'fonts/Krona.ttf'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
+import Krona from 'fonts/Krona.ttf';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   font-family: 'Krona One';
   src: url(${Krona});
 }
+
   body {
     padding: 0;
     margin: 0;
@@ -19,9 +20,11 @@ export const GlobalStyle = createGlobalStyle`
   ul {
     margin:0;
     padding: 0;
-    li {
-      list-style: none;
-      width: 100vw;
-    }
   }
-`
+  li {
+      list-style: none;
+    }
+    input {
+      box-sizing: border-box;
+    }
+`;

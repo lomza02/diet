@@ -15,54 +15,6 @@
       "fats": 3.6,
       "proteins": 31,
       "kcals": 164
-    },
-    {
-      "id": 3,
-      "name": "baton snickers",
-      "carbs": 63,
-      "fats": 24,
-      "proteins": 7,
-      "kcals": 487
-    },
-    {
-      "carbs": 1.01,
-      "fats": 1.02,
-      "kcals": 34,
-      "name": "Pomidor",
-      "proteins": 10,
-      "id": 4
-    },
-    {
-      "carbs": 2,
-      "fats": 2,
-      "kcals": 32,
-      "name": "Ziemniak",
-      "proteins": 12,
-      "id": 5
-    },
-    {
-      "carbs": 15,
-      "fats": 1,
-      "kcals": 29,
-      "name": "Brokuły",
-      "proteins": 9,
-      "id": 6
-    },
-    {
-      "carbs": 2,
-      "fats": 2,
-      "kcals": 2,
-      "name": "makaron 0kcal",
-      "proteins": 2,
-      "id": 7
-    },
-    {
-      "carbs": 8,
-      "fats": 8,
-      "kcals": 8,
-      "name": "008",
-      "proteins": 8,
-      "id": 8
     }
   ],
   "meals": [
@@ -79,28 +31,22 @@
       "id": 2
     },
     {
-      "amount": 100.5,
-      "productId": 5,
-      "date": "2020-10-11",
-      "id": 3
-    },
-    {
       "amount": 222,
       "productId": 1,
       "date": "2020-10-11",
       "id": 5
     },
     {
-      "amount": 111,
-      "productId": 6,
-      "date": "2020-10-11",
-      "id": 7
-    },
-    {
       "amount": 25,
       "productId": 1,
       "date": "2020-10-11",
       "id": 8
+    },
+    {
+      "amount": 111,
+      "productId": 2,
+      "date": "2020-10-18",
+      "id": 9
     }
   ]
 }

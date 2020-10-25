@@ -5,5 +5,5 @@ export { default as Modal } from './Modal';
 export { default as Loading } from './Loading';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as Button } from './Button';
-export { List, ListItem } from './List';
+export { List, ListItem, ItemEdit } from './List';
 export { default as ButtonWrapper } from './ButtonWrapper';

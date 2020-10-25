@@ -17,3 +17,8 @@ export const ListItem = styled.li`
   padding-bottom: ${({ theme }) => theme.sizes.sm}px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.primary.light};
 `;
+
+export const ItemEdit = styled.span`
+  font-size: 20px;
+  padding-right: 20px;
+`;

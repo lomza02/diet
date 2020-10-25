@@ -12,7 +12,7 @@ const ProductsList = () => {
   const history = useHistory();
   const longPressProps = useLongPress({
     onLongPress: (currentTarget) => {
-      const ListItemId = currentTarget.value;
+      const ListItemId = currentTarget.id;
       setSelectedMeal(ListItemId);
       history.push('/remove-meal');
     },
@@ -23,7 +23,7 @@ const ProductsList = () => {
       {groupedProductsWithDetails.length !== 0 ? (
         groupedProductsWithDetails.map((item) => {
           return (
-            <ListItem key={item.id} {...longPressProps} value={item.id}>
+            <ListItem key={item._id} {...longPressProps} id={item._id}>
               {item.name}
               <ProductInfo>
                 <div>{item.amount} g</div>

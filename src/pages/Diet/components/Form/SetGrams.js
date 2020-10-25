@@ -20,15 +20,15 @@ const SetGrams = (props) => {
   });
   const onSubmit = async (values) => {
     const lastAddedProduct = products[products.length - 1];
-    const meal = props.activeProduct.id
+    const meal = props.activeProduct._id
       ? {
           ...values,
-          productId: props.activeProduct.id,
+          productId: props.activeProduct._id,
           date: dateISO,
         }
       : {
           ...values,
-          productId: lastAddedProduct.id,
+          productId: lastAddedProduct._id,
           date: dateISO,
         };
     try {
@@ -42,7 +42,7 @@ const SetGrams = (props) => {
 
   useEffect(() => {
     return () => {
-      const lastProductId = products[products.length - 1].id;
+      const lastProductId = products[products.length - 1]._id;
       if (props.history.location.pathname === '/add-new')
         props.mutateRemoveProduct(lastProductId);
     };

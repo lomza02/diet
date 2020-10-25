@@ -26,7 +26,7 @@ const EditProduct = () => {
   const history = useHistory();
   const onSubmit = async (values) => {
     try {
-      await mutate({ values, id: selectedMeal });
+      await mutate({ values, _id: selectedMeal });
       history.push('/');
     } catch (error) {
       console.log(error);

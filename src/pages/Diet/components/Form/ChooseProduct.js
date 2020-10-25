@@ -58,7 +58,12 @@ const ChooseProduct = (props) => {
   return (
     <>
       <ButtonWrapper>
-        <SearchInput type='text' onChange={handleProductsFilter} />
+        <SearchInput
+          ref={input}
+          type='text'
+          onChange={handleProductsFilter}
+          placeholder='Wyszukaj produktu'
+        />
       </ButtonWrapper>
       <ScrollList>
         {filtredProducts.map((product) =>

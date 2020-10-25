@@ -46,6 +46,7 @@ export const CloseSection = styled.div`
   width: 100%;
   justify-content: flex-end;
   span {
+    font-size: 30px;
     cursor: pointer;
   }
 `;
@@ -56,4 +57,12 @@ export const Content = styled.div`
   flex-grow: 4;
   width: 100%;
   justify-content: space-between;
+`;
+
+export const ContentSmall = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-grow: 4;
+  width: 100%;
 `;

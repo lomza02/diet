@@ -7,6 +7,7 @@ import {
   SmallModal,
   CloseSection,
   Content,
+  ContentSmall,
 } from './Modal.css';
 
 export default (props) => {
@@ -21,7 +22,7 @@ export default (props) => {
             <CloseSection>
               <span onClick={handleMainPage}>&times;</span>
             </CloseSection>
-            <Content>{props.children}</Content>
+            <ContentSmall>{props.children}</ContentSmall>
           </SmallModal>
         </Background>,
         document.querySelector('#modal')

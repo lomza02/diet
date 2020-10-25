@@ -10,6 +10,7 @@ const ProductsList = () => {
   const data = useContext(store);
   const { groupedProductsWithDetails, setSelectedMeal } = data;
   const history = useHistory();
+
   const longPressProps = useLongPress({
     onLongPress: (currentTarget) => {
       const ListItemId = currentTarget.id;

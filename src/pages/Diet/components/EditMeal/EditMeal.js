@@ -25,12 +25,12 @@ const EditMeal = () => {
     history.push('/edit-meal');
   };
   return (
-    <ButtonWrapper>
+    <>
       <Button red onClick={handleRemoveMeal}>
         Usuń
       </Button>
       <Button onClick={handleEditMeal}>Edytuj</Button>
-    </ButtonWrapper>
+    </>
   );
 };
 

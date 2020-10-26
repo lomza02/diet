@@ -9,7 +9,7 @@ const fetchProducts = async () => {
   return data;
 };
 
-const sendProducts = async (values) => {
+const addProduct = async (values) => {
   const kcals = parseFloat(values.kcals);
   const fats = parseFloat(values.fats);
   const carbs = parseFloat(values.carbs);
@@ -35,7 +35,7 @@ const sendProducts = async (values) => {
   return response.json();
 };
 
-export const sendMeal = async (data) => {
+export const addMeal = async (data) => {
   const response = await fetch(
     `${process.env.REACT_APP_API_ADRESS}/meals/add`,
     {
@@ -74,7 +74,7 @@ export const removeMeal = async (id) => {
   return response.json();
 };
 
-export const hiddenProduct = async (data) => {
+export const hideProduct = async (data) => {
   console.log(data);
   const { hidden, _id } = data;
   console.log(hidden);
@@ -94,9 +94,9 @@ export const hiddenProduct = async (data) => {
 export default {
   fetchMeals,
   fetchProducts,
-  sendProducts,
-  hiddenProduct,
-  sendMeal,
+  addProduct,
+  hideProduct,
+  addMeal,
   removeMeal,
   editMeal,
 };

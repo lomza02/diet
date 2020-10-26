@@ -1,9 +1,10 @@
+import { DESKTOP_WIDTH, TABLET_WIDTH } from './constants';
 const size = {
-    tablet: '768px',
-    desktop: '1024px'
-  }
+  tablet: `${TABLET_WIDTH}px`,
+  desktop: `${DESKTOP_WIDTH}px`,
+};
 
-  export const device = {
-    tablet: `(min-width: ${size.tablet})`,
-    desktop: `(min-width: ${size.desktop})`,
-  };
+export const device = {
+  tablet: `(min-width: ${size.tablet})`,
+  desktop: `(min-width: ${size.desktop})`,
+};

@@ -1,7 +1,4 @@
 export const INCREASE_ONE_DAY = 1;
 export const DECREASE_ONE_DAY = -1;
-//react-final-form require string as name attribute of components
-export const STRING_PROVIDER = '-product';
 export const DESKTOP_WIDTH = 1024;
-
-
+export const TABLET_WIDTH = 768;

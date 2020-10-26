@@ -2,12 +2,12 @@ import React, { useState, useMemo, useCallback } from 'react';
 import changeDate from 'utils';
 import { useQuery } from 'react-query';
 import API from 'data/fetch';
-import { groupBy } from 'utils/groupBy';
-import { getGroupedProductsWithDetails } from 'utils/getGruppedProducts';
+import { getGruppedProducts, groupBy } from 'functions';
 
 const store = React.createContext({});
 
 const DataContext = ({ children }) => {
+  const [newProduct, setNewProduct] = useState();
   const date = useMemo(() => new Date(), []);
   const initialDate = useCallback(() => changeDate(date), [date]);
   const [activeDate, setActiveDate] = useState(initialDate);
@@ -18,10 +18,7 @@ const DataContext = ({ children }) => {
   const { data: products } = useQuery('products', API.fetchProducts);
   const groupedMeals = groupBy(meals, (meal) => meal.date).get(dateISO);
 
-  const groupedProductsWithDetails = getGroupedProductsWithDetails(
-    groupedMeals,
-    products
-  );
+  const groupedProductsWithDetails = getGruppedProducts(groupedMeals, products);
 
   const handleActiveDate = useCallback(
     (oneDay) => {
@@ -46,6 +43,8 @@ const DataContext = ({ children }) => {
         setSelectedMeal,
         handleActiveDate,
         setCheckedProducts,
+        newProduct,
+        setNewProduct,
       }}
     >
       {children}

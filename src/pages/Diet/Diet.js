@@ -1,12 +1,15 @@
 import React from 'react';
 import { Modal, Wrapper, PlusButton } from 'components';
 import {
-  ActionSection,
-  NavigationBar,
-  ProductsList,
-  ChartSection,
-} from 'pages/Diet/components';
-import { Form, EditProduct, EditMeal } from 'pages/Diet/components';
+  Navigation,
+  Products,
+  FormProduct,
+  FormAmount,
+  FormEditAmount,
+  Chart,
+  Meals,
+  PopupEditMeal,
+} from 'containers';
 import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useWindowSize } from 'data/hooks/useWindowSize';
@@ -19,11 +22,10 @@ const Diet = () => {
 
   return (
     <>
-      <NavigationBar />
+      <Navigation />
       <Wrapper>
-        {size.width > DESKTOP_WIDTH ? <ActionSection /> : null}
-        <ChartSection />
-        <ProductsList />
+        <Chart />
+        <Meals />
         {size.width <= DESKTOP_WIDTH ? (
           <Link to='/choose-product'>
             <PlusButton>&#10010;</PlusButton>
@@ -33,27 +35,30 @@ const Diet = () => {
       <Switch>
         <Route exact path='/choose-product'>
           <Modal>
-            <Form />
+            <Products />
           </Modal>
         </Route>
+
         <Route exact path='/add-new'>
           <Modal>
-            <Form />
+            <FormProduct />
           </Modal>
         </Route>
+
         <Route exact path='/set-grams'>
           <Modal>
-            <Form />
+            <FormAmount />
           </Modal>
         </Route>
+
         <Route path='/edit-meal'>
           <Modal>
-            <EditProduct />
+            <FormEditAmount />
           </Modal>
         </Route>
         <Route path='/remove-meal'>
           <Modal small>
-            <EditMeal />
+            <PopupEditMeal />
           </Modal>
         </Route>
       </Switch>

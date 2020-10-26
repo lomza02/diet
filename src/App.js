@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import Diet from 'pages/Diet';
+import Diet from './pages/Diet';
 import theme from 'utils/theme';
 import { ReactQueryConfigProvider } from 'react-query';
 import { ErrorBoundary } from 'components';

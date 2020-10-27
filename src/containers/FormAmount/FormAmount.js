@@ -51,6 +51,7 @@ const FormAmount = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <h5>Dodaj posiłek</h5>
       <InputWrapper>
         <Label>Waga w gramach</Label>
         <Input name='amount' ref={register({ required: true })} />

@@ -5,6 +5,7 @@ import API from '../../data/fetch';
 import { useMutation } from 'react-query';
 import DataContextHandler from 'data/context';
 import { useHistory } from 'react-router-dom';
+import { DESKTOP_WIDTH } from 'utils/constants';
 
 const Products = () => {
   const { store } = DataContextHandler;
@@ -64,6 +65,13 @@ const Products = () => {
   return (
     <>
       <Header>Wybierz produkt z listy lub dodaj nowy</Header>
+      {!DESKTOP_WIDTH ? null : (
+        <ButtonWrapper>
+          <Button type='button' onClick={handleNewProduct}>
+            Dodaj nowy
+          </Button>
+        </ButtonWrapper>
+      )}
       <ButtonWrapper>
         <SearchInput
           ref={input}
@@ -79,19 +87,21 @@ const Products = () => {
               <ItemEdit id={product._id} onClick={handleHideProduct}>
                 ×
               </ItemEdit>
-              {product.name}
+              <ItemEdit>{product.name}</ItemEdit>
             </ListItem>
           )
         )}
       </ScrollList>
-      <ButtonWrapper>
-        <Button type='button' onClick={handleNewProduct}>
-          Dodaj nowy
-        </Button>
-        <Button type='button' onClick={handleGoBack}>
-          Wróć
-        </Button>
-      </ButtonWrapper>
+      {DESKTOP_WIDTH ? null : (
+        <ButtonWrapper>
+          <Button type='button' onClick={handleNewProduct}>
+            Dodaj nowy
+          </Button>
+          <Button type='button' onClick={handleGoBack}>
+            Wróć
+          </Button>
+        </ButtonWrapper>
+      )}
     </>
   );
 };

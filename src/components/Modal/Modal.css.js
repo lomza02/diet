@@ -36,8 +36,11 @@ export const SmallModal = styled(Modal)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 320px;
   height: 30vh;
+  @media ${device.tablet} {
+    height: 50vh;
+  }
 `;
 
 export const CloseSection = styled.div`

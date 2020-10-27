@@ -10,3 +10,12 @@ export const MealInfo = styled.div`
 export const MealList = styled(List)`
   margin-bottom: 90px;
 `;
+
+export const EditContainer = styled.div`
+  font-size: 10px;
+  display: flex;
+  justify-content: flex-end;
+  color: ${(props) => props.theme.colors.primary.normal};
+  cursor: pointer;
+  font-weight: bold;
+`;

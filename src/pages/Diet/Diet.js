@@ -23,15 +23,26 @@ const Diet = () => {
   return (
     <>
       <Navigation />
-      <Wrapper>
-        <Chart />
-        <Meals />
-        {size.width <= DESKTOP_WIDTH ? (
+      {size.width <= DESKTOP_WIDTH ? (
+        <Wrapper>
+          <Chart />
+          <Meals />
           <Link to='/choose-product'>
             <PlusButton>&#10010;</PlusButton>
           </Link>
-        ) : null}
-      </Wrapper>
+        </Wrapper>
+      ) : (
+        <Wrapper>
+          <section style={{ width: '50%' }}>
+            <Chart />
+            <Meals />
+          </section>
+          <section style={{ width: '30%' }}>
+            <Products />
+          </section>
+        </Wrapper>
+      )}
+
       <Switch>
         <Route exact path='/choose-product'>
           <Modal>
@@ -46,13 +57,13 @@ const Diet = () => {
         </Route>
 
         <Route exact path='/set-grams'>
-          <Modal>
+          <Modal small>
             <FormAmount />
           </Modal>
         </Route>
 
         <Route path='/edit-meal'>
-          <Modal>
+          <Modal small>
             <FormEditAmount />
           </Modal>
         </Route>

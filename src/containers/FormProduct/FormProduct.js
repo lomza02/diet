@@ -48,23 +48,19 @@ const AddProduct = () => {
         {errors.name && <ErrMsg>Nieprawidłowa wartość</ErrMsg>}
 
         <Label>Kalorie na 100 g</Label>
-        <Input type='number' name='kcals' ref={register({ required: true })} />
+        <Input name='kcals' ref={register({ required: true })} />
         {errors.kcals && <ErrMsg>Nieprawidłowa wartość</ErrMsg>}
 
         <Label>Białko na 100 g</Label>
-        <Input
-          type='number'
-          name='proteins'
-          ref={register({ required: true })}
-        />
+        <Input name='proteins' ref={register({ required: true })} />
         {errors.proteins && <ErrMsg>Nieprawidłowa wartość</ErrMsg>}
 
         <Label>Węglowodany na 100 g</Label>
-        <Input type='number' name='carbs' ref={register({ required: true })} />
+        <Input name='carbs' ref={register({ required: true })} />
         {errors.carbs && <ErrMsg>Nieprawidłowa wartość</ErrMsg>}
 
         <Label>Tłuszcze na 100 g</Label>
-        <Input type='number' name='fats' ref={register({ required: true })} />
+        <Input name='fats' ref={register({ required: true })} />
         {errors.fats && <ErrMsg>Nieprawidłowa wartość</ErrMsg>}
       </InputWrapper>
       <ButtonWrapper>

@@ -20,5 +20,6 @@ export const ListItem = styled.li`
 
 export const ItemEdit = styled.span`
   font-size: 20px;
-  padding-right: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 `;

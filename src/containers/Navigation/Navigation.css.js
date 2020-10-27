@@ -15,7 +15,7 @@ export const Bar = styled.div`
       font-size: ${(props) => props.theme.sizes.sm * 1.5}px;
       text-align: center;
       @media ${device.tablet} {
-        font-size: ${(props) => props.theme.sizes.sm * 2.2}px;
+        font-size: ${(props) => props.theme.sizes.sm * 1.8}px;
       }
     }
   }

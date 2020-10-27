@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import changeDate from 'utils';
+import changeDate from 'utils/date';
 import { useQuery } from 'react-query';
 import API from 'data/fetch';
 import { getGruppedProducts, groupBy } from 'functions';

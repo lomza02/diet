@@ -1,24 +1,34 @@
-import React, { useContext } from 'react';
-import { ListItem } from 'components';
+import React, { useContext, useCallback } from 'react';
+import { ListItem, Button } from 'components';
 import DataContextHandler from 'data/context';
 import { useLongPress } from 'data/hooks/useLongPress';
 import { useHistory } from 'react-router-dom';
-import { MealInfo, MealList } from './Meals.css';
+import { MealInfo, MealList, EditContainer } from './Meals.css';
+import { TABLET_WIDTH } from 'utils/constants';
+import { useWindowSize } from 'data/hooks/useWindowSize';
 
 const Meals = () => {
+  const size = useWindowSize();
   const { store } = DataContextHandler;
   const data = useContext(store);
   const { groupedProductsWithDetails, setSelectedMeal } = data;
+
   const history = useHistory();
 
   const longPressProps = useLongPress({
     onLongPress: (currentTarget) => {
       const ListItemId = currentTarget.id;
+      console.log(ListItemId);
       setSelectedMeal(ListItemId);
       history.push('/remove-meal');
     },
   });
 
+  const handleEditRemove = (e) => {
+    const ListItemId = e.target.id;
+    setSelectedMeal(ListItemId);
+    history.push('/remove-meal');
+  };
   return (
     <MealList>
       {groupedProductsWithDetails.length !== 0 ? (
@@ -35,6 +45,13 @@ const Meals = () => {
                 <div>W: {item.carbs} g</div>
                 <div>T: {item.fats} g</div>
               </MealInfo>
+              {size.width >= TABLET_WIDTH ? (
+                <EditContainer link>
+                  <div id={item._id} onClick={handleEditRemove}>
+                    Edytuj / Usuń
+                  </div>
+                </EditContainer>
+              ) : null}
             </ListItem>
           );
         })

@@ -22,7 +22,7 @@ const PopupEditMeal = () => {
     }
   }, [selectedMeal, mutate, history]);
   const handleEditMeal = () => {
-    history.push('/edit-meal');
+    history.push('/edit-amount');
   };
   return (
     <>

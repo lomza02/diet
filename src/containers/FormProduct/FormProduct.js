@@ -35,7 +35,7 @@ const AddProduct = () => {
     setNewProduct(values);
     try {
       await mutate(values);
-      history.push('/set-grams');
+      history.push('/form-amount');
     } catch (error) {
       console.log(error);
     }

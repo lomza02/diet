@@ -1,5 +1,5 @@
-import React, { useContext, useCallback } from 'react';
-import { ListItem, Button } from 'components';
+import React, { useContext } from 'react';
+import { ListItem } from 'components';
 import DataContextHandler from 'data/context';
 import { useLongPress } from 'data/hooks/useLongPress';
 import { useHistory } from 'react-router-dom';
@@ -20,14 +20,14 @@ const Meals = () => {
       const ListItemId = currentTarget.id;
       console.log(ListItemId);
       setSelectedMeal(ListItemId);
-      history.push('/remove-meal');
+      history.push('/edit-meal');
     },
   });
 
   const handleEditRemove = (e) => {
     const ListItemId = e.target.id;
     setSelectedMeal(ListItemId);
-    history.push('/remove-meal');
+    history.push('/edit-meal');
   };
   return (
     <MealList>

@@ -27,7 +27,7 @@ const Diet = () => {
         <Wrapper>
           <Chart />
           <Meals />
-          <Link to='/choose-product'>
+          <Link to='/products'>
             <PlusButton>&#10010;</PlusButton>
           </Link>
         </Wrapper>
@@ -44,30 +44,30 @@ const Diet = () => {
       )}
 
       <Switch>
-        <Route exact path='/choose-product'>
+        <Route exact path='/products'>
           <Modal>
             <Products />
           </Modal>
         </Route>
 
-        <Route exact path='/add-new'>
+        <Route exact path='/form-product'>
           <Modal>
             <FormProduct />
           </Modal>
         </Route>
 
-        <Route exact path='/set-grams'>
+        <Route exact path='/form-amount'>
           <Modal small>
             <FormAmount />
           </Modal>
         </Route>
 
-        <Route path='/edit-meal'>
+        <Route path='/edit-amount'>
           <Modal small>
             <FormEditAmount />
           </Modal>
         </Route>
-        <Route path='/remove-meal'>
+        <Route path='/edit-meal'>
           <Modal small>
             <PopupEditMeal />
           </Modal>

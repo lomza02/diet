@@ -27,7 +27,7 @@ const Products = () => {
     const id = e.target.id;
     const target = products.find((product) => product._id === id);
     setNewProduct(target);
-    history.push('/set-grams');
+    history.push('/form-amount');
   };
 
   const handleProductsFilter = () => {
@@ -56,7 +56,7 @@ const Products = () => {
   };
 
   const handleNewProduct = () => {
-    history.push('/add-new');
+    history.push('/form-product');
   };
   const handleGoBack = () => {
     history.goBack();

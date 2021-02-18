@@ -1,0 +1,36 @@
+{
+    "products": [
+    {
+    "carbs": 1,
+    "fats": 1,
+    "hidden": false,
+    "kcals": 1,
+    "name": "Mąka",
+    "proteins": 1,
+    "_id": "602d8b3bede5710017eb8792"
+    },
+    {
+    "carbs": 1,
+    "fats": 1,
+    "hidden": false,
+    "kcals": 1,
+    "name": "Masło",
+    "proteins": 1,
+    "_id": "60ed8b3bede5710017eb8792"
+    }
+],
+"meals": [
+    {
+    "amount": 22,
+    "date": "2021-02-18",
+    "productId": "60ed8b3bede5710017eb8792",
+    "_id": "602d64a8dc3faf00171e9fc4"
+},
+{
+    "amount": 22,
+    "date": "2021-02-18",
+    "productId": "602d8b3bede5710017eb8792",
+    "_id": "602d64a8dc3faf00171e9fc5"
+}
+]
+}

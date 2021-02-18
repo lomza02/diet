@@ -1,9 +1,11 @@
 const getGruppedProducts = (groupedMeals, products) => {
   if (!groupedMeals) return [];
+  // console.log('groupedMeals', groupedMeals);
+
   const productsWithDetails = groupedMeals.map((meal) => {
     const product = products.find((product) => product._id === meal.productId);
     if (!product) {
-      throw Error('Probably product is deleted from database');
+      throw Error(`Product don't exists`);
     }
     const kcals = (product.kcals * meal.amount) / 100;
     const fats = (product.fats * meal.amount) / 100;

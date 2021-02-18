@@ -7,9 +7,9 @@ import { getTotalDailyValues } from 'functions';
 const DateBar = () => {
   const { store } = DataContextHandler;
   const data = useContext(store);
-  const { activeDate, handleActiveDate, groupedProductsWithDetails } = data;
+  const { activeDate, handleActiveDate, mealsWithDetails } = data;
   const { dayName, dayNumber, month, year } = activeDate;
-  const total = getTotalDailyValues(groupedProductsWithDetails);
+  const total = getTotalDailyValues(mealsWithDetails);
   return (
     <>
       <Bar>

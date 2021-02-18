@@ -87,7 +87,7 @@ const Products = () => {
               <ItemEdit id={product._id} onClick={handleHideProduct}>
                 ×
               </ItemEdit>
-              <ItemEdit>{product.name}</ItemEdit>
+              <ItemEdit id={product._id}>{product.name}</ItemEdit>
             </ListItem>
           )
         )}

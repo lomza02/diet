@@ -11,7 +11,7 @@ const Meals = () => {
   const size = useWindowSize();
   const { store } = DataContextHandler;
   const data = useContext(store);
-  const { groupedProductsWithDetails, setSelectedMeal } = data;
+  const { mealsWithDetails, setSelectedMeal } = data;
 
   const history = useHistory();
 
@@ -31,8 +31,8 @@ const Meals = () => {
   };
   return (
     <MealList>
-      {groupedProductsWithDetails.length !== 0 ? (
-        groupedProductsWithDetails.map((item) => {
+      {mealsWithDetails.length !== 0 ? (
+        mealsWithDetails.map((item) => {
           return (
             <ListItem key={item._id} {...longPressProps} id={item._id}>
               {item.name}

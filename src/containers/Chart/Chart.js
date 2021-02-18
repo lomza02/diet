@@ -8,9 +8,9 @@ import theme from 'utils/theme';
 const Chart = () => {
   const { store } = DataContextHandler;
   const data = useContext(store);
-  const { groupedProductsWithDetails } = data;
-  const total = useMemo(() => getTotalDailyValues(groupedProductsWithDetails), [
-    groupedProductsWithDetails,
+  const { mealsWithDetails } = data;
+  const total = useMemo(() => getTotalDailyValues(mealsWithDetails), [
+    mealsWithDetails,
   ]);
   return (
     <>

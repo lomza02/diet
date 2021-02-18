@@ -1,11 +1,13 @@
-const fetchMeals = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_ADRESS}/meals`);
-  const data = await response.json();
+import uuid from 'uuid-random';
+const fetchMeals = () => {
+  const data = JSON.parse(localStorage.meals);
+  // console.log('meals', data);
   return data;
 };
-const fetchProducts = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_ADRESS}/products`);
-  const data = await response.json();
+const fetchProducts = () => {
+  const data = JSON.parse(localStorage.products);
+  // console.log('products', data);
+
   return data;
 };
 
@@ -21,74 +23,49 @@ const addProduct = async (values) => {
     name: values.name,
     proteins: parseFloat(proteins.toFixed(2)),
     hidden: false,
+    _id: uuid(),
   };
-  const response = await fetch(
-    `${process.env.REACT_APP_API_ADRESS}/products/add`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }
-  );
-  return response.json();
+  const products = JSON.parse(localStorage.products);
+  products.push(data);
+  localStorage.setItem('products', JSON.stringify(products));
+  return true;
 };
 
 export const addMeal = async (data) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_API_ADRESS}/meals/add`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }
-  );
-  return response.json();
+  data._id = uuid();
+  const meals = JSON.parse(localStorage.meals);
+  meals.push(data);
+  localStorage.setItem('meals', JSON.stringify(meals));
+  return true;
 };
 
 export const editMeal = async (data) => {
   const { values, _id } = data;
-  const response = await fetch(
-    `${process.env.REACT_APP_API_ADRESS}/meals/update/${_id}`,
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    }
-  );
-  return response.json();
+  const meals = JSON.parse(localStorage.meals);
+  const meal = meals.find((meal) => meal._id === _id);
+  meal.amount = values.amount;
+  localStorage.setItem('meals', JSON.stringify(meals));
+  return true;
 };
 
 export const removeMeal = async (id) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_API_ADRESS}/meals/${id}`,
-    {
-      method: 'DELETE',
-    }
-  );
-  return response.json();
+  const meals = JSON.parse(localStorage.meals);
+  const meal = meals.find((meal) => meal._id === id);
+  const index = meals.indexOf(meal);
+  if (index > -1) {
+    meals.splice(index, 1);
+  }
+  localStorage.setItem('meals', JSON.stringify(meals));
+  return true;
 };
 
 export const hideProduct = async (data) => {
-  console.log(data);
-  const { hidden, _id } = data;
-  console.log(hidden);
-  const response = await fetch(
-    `${process.env.REACT_APP_API_ADRESS}/products/update/${_id}`,
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ hidden }),
-    }
-  );
-  return response.json();
+  const { _id } = data;
+  const products = JSON.parse(localStorage.products);
+  const product = products.find((product) => product._id === _id);
+  product.hidden = true;
+  localStorage.setItem('products', JSON.stringify(products));
+  return true;
 };
 
 export default {

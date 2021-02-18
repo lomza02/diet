@@ -1,7 +1,5 @@
 const getGruppedProducts = (groupedMeals, products) => {
   if (!groupedMeals) return [];
-  // console.log('groupedMeals', groupedMeals);
-
   const productsWithDetails = groupedMeals.map((meal) => {
     const product = products.find((product) => product._id === meal.productId);
     if (!product) {

@@ -18,7 +18,6 @@ const Meals = () => {
   const longPressProps = useLongPress({
     onLongPress: (currentTarget) => {
       const ListItemId = currentTarget.id;
-      console.log(ListItemId);
       setSelectedMeal(ListItemId);
       history.push('/edit-meal');
     },

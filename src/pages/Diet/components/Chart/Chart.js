@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { PieChart } from 'components';
+import { PieChart } from '../index';
 import { getTotalDailyValues } from 'functions';
 import DataContextHandler from 'data/context';
 import { Bar, Wrapper, MacroBar } from './Chart.css';

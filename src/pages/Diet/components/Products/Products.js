@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Button, ListItem, ButtonWrapper, ItemEdit } from 'components';
 import { ScrollList, SearchInput, Header } from './Products.css';
-import API from '../../data/fetch';
+import API from '../../../../data/fetch';
 import { useMutation } from 'react-query';
 import DataContextHandler from 'data/context';
 import { useHistory } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Products = () => {
   const data = useContext(store);
   const { setNewProduct, products } = data;
   const input = useRef();
-  const [filtredProducts, setFiltredProducts] = useState(products);
+  const [filtredProducts, setFiltredProducts] = useState([]);
   const [mutate] = useMutation(API.hideProduct, {
     refetchQueries: ['products'],
   });

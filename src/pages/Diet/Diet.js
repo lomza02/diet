@@ -9,7 +9,7 @@ import {
   Chart,
   Meals,
   PopupEditMeal,
-} from 'containers';
+} from 'pages/Diet/components';
 import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import { useWindowSize } from 'data/hooks/useWindowSize';

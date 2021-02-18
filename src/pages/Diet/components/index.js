@@ -6,3 +6,4 @@ export { default as Chart } from './Chart';
 export { default as Meals } from './Meals';
 export { default as Navigation } from './Navigation';
 export { default as PopupEditMeal } from './PopupEditMeal';
+export { default as PieChart } from './PieChart';

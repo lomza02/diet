@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Form, InputWrapper, ErrMsg, Label, Input } from 'components';
 import { Button, ButtonWrapper } from 'components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import DataContextHandler from 'data/context';
-import { useMutation } from 'react-query';
-import API from 'data/fetch';
+import { connect } from 'react-redux';
+import { add, select } from 'actions/products';
+import uuid from 'uuid-random';
 
 const schema = yup.object().shape({
   name: yup.string().max(100).required(),
@@ -17,13 +17,7 @@ const schema = yup.object().shape({
   fats: yup.number().min(0).max(100).required(),
 });
 
-const AddProduct = () => {
-  const [mutate] = useMutation(API.addProduct, {
-    refetchQueries: ['products'],
-  });
-  const { store } = DataContextHandler;
-  const data = useContext(store);
-  const { setNewProduct } = data;
+const AddProduct = ({ add, select }) => {
   const history = useHistory();
   const handleGoBack = () => {
     history.goBack();
@@ -31,14 +25,11 @@ const AddProduct = () => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = async (values) => {
-    setNewProduct(values);
-    try {
-      await mutate(values);
-      history.push('/form-amount');
-    } catch (error) {
-      console.log(error);
-    }
+  const onSubmit = (data) => {
+    data.id = uuid();
+    add(data);
+    select(data.id);
+    history.push('/form-amount');
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -72,5 +63,9 @@ const AddProduct = () => {
     </Form>
   );
 };
+const mapDispatchToProps = (dispatch) => ({
+  add: (product) => dispatch(add(product)),
+  select: (id) => dispatch(select(id)),
+});
 
-export default AddProduct;
+export default connect(null, mapDispatchToProps)(AddProduct);

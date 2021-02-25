@@ -1,22 +1,15 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button, ListItem, ButtonWrapper, ItemEdit } from 'components';
 import { ScrollList, SearchInput, Header } from './Products.css';
-import API from '../../../../data/fetch';
-import { useMutation } from 'react-query';
-import DataContextHandler from 'data/context';
+import { connect } from 'react-redux';
+import { remove, select } from 'actions/products';
 import { useHistory } from 'react-router-dom';
 import { DESKTOP_WIDTH } from 'utils/constants';
 
-const Products = () => {
-  const { store } = DataContextHandler;
+const Products = ({ products, remove, select }) => {
   const history = useHistory();
-  const data = useContext(store);
-  const { setNewProduct, products } = data;
   const input = useRef();
   const [filtredProducts, setFiltredProducts] = useState([]);
-  const [mutate] = useMutation(API.hideProduct, {
-    refetchQueries: ['products'],
-  });
 
   useEffect(() => {
     setFiltredProducts(products);
@@ -25,8 +18,7 @@ const Products = () => {
   const handleClick = (e) => {
     e.stopPropagation();
     const id = e.target.id;
-    const target = products.find((product) => product._id === id);
-    setNewProduct(target);
+    select(id);
     history.push('/form-amount');
   };
 
@@ -41,18 +33,10 @@ const Products = () => {
     setFiltredProducts(filtredProductsArray);
   };
 
-  const handleHideProduct = async (e) => {
+  const handleRemoveProduct = (e) => {
     e.stopPropagation();
-    const _id = e.target.id;
-    const payload = {
-      _id,
-      hidden: true,
-    };
-    try {
-      await mutate(payload);
-    } catch (error) {
-      console.log(error);
-    }
+    const id = e.target.id;
+    remove(id);
   };
 
   const handleNewProduct = () => {
@@ -83,11 +67,11 @@ const Products = () => {
       <ScrollList>
         {filtredProducts.map((product) =>
           product.hidden ? null : (
-            <ListItem onClick={handleClick} key={product._id} id={product._id}>
-              <ItemEdit id={product._id} onClick={handleHideProduct}>
+            <ListItem onClick={handleClick} key={product.id} id={product.id}>
+              <ItemEdit id={product.id} onClick={handleRemoveProduct}>
                 ×
               </ItemEdit>
-              <ItemEdit id={product._id}>{product.name}</ItemEdit>
+              <ItemEdit id={product.id}>{product.name}</ItemEdit>
             </ListItem>
           )
         )}
@@ -105,5 +89,12 @@ const Products = () => {
     </>
   );
 };
+const mapStateToProps = (state) => ({
+  products: state.products.items,
+});
+const mapDispatchToProps = (dispatch) => ({
+  remove: (id) => dispatch(remove(id)),
+  select: (id) => dispatch(select(id)),
+});
 
-export default Products;
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

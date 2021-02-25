@@ -85,7 +85,7 @@ const PieChart = ({ data }) => {
       },
     });
     setChart(chart);
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (!chart) return;

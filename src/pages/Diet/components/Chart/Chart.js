@@ -1,16 +1,13 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { PieChart } from '../index';
 import { getTotalDailyValues } from 'functions';
-import DataContextHandler from 'data/context';
 import { Bar, Wrapper, MacroBar } from './Chart.css';
 import theme from 'utils/theme';
+import { connect } from 'react-redux';
 
-const Chart = () => {
-  const { store } = DataContextHandler;
-  const data = useContext(store);
-  const { mealsWithDetails } = data;
-  const total = useMemo(() => getTotalDailyValues(mealsWithDetails), [
-    mealsWithDetails,
+const Chart = ({ filtredMeals }) => {
+  const total = useMemo(() => getTotalDailyValues(filtredMeals), [
+    filtredMeals,
   ]);
   return (
     <>
@@ -29,7 +26,7 @@ const Chart = () => {
           </MacroBar>
         </div>
       </Bar>
-      {total.kcals ? (
+      {!!total.kcals ? (
         <Wrapper>
           <div>
             <PieChart data={[total.proteins, total.carbs, total.fats]} />
@@ -39,5 +36,8 @@ const Chart = () => {
     </>
   );
 };
+const mapStateToProps = (state) => ({
+  meals: state.meals.items,
+});
 
-export default Chart;
+export default connect(mapStateToProps)(Chart);

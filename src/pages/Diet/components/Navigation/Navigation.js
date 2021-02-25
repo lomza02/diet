@@ -1,34 +1,77 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bar } from './Navigation.css';
-import { DECREASE_ONE_DAY, INCREASE_ONE_DAY } from 'utils/constants';
-import DataContextHandler from 'data/context';
-import { getTotalDailyValues } from 'functions';
+import formatDate from 'utils/date';
+import { increase, decrease } from 'actions/date';
+import { connect } from 'react-redux';
 
-const DateBar = () => {
-  const { store } = DataContextHandler;
-  const data = useContext(store);
-  const { activeDate, handleActiveDate, mealsWithDetails } = data;
-  const { dayName, dayNumber, month, year } = activeDate;
-  const total = getTotalDailyValues(mealsWithDetails);
+const Navigation = ({
+  meals,
+  increase,
+  decrease,
+  date,
+  setFiltredMeals,
+  filtredMeals,
+}) => {
+  const [activeDate, setActiveDate] = useState({});
+  useEffect(() => {
+    setActiveDate(formatDate(date));
+  }, [date]);
   return (
     <>
       <Bar>
-        <span onClick={() => handleActiveDate(DECREASE_ONE_DAY)}>&#10096;</span>
+        <span
+          onClick={() => {
+            decrease();
+            setActiveDate(formatDate(date));
+            setFiltredMeals(
+              meals.filter(
+                (meal) => meal.date === date.toISOString().substring(0, 10)
+              )
+            );
+          }}
+        >
+          &#10096;
+        </span>
         <div>
-          <h3>{dayName}</h3>
+          <h3>{activeDate.dayName}</h3>
           <h3>
-            {dayNumber} {month} {year}
+            {activeDate.dayNumber} {activeDate.month} {activeDate.year}
           </h3>
         </div>
-        <span onClick={() => handleActiveDate(INCREASE_ONE_DAY)}>&#10097;</span>
+        <span
+          onClick={() => {
+            increase();
+            setActiveDate(formatDate(date));
+            setFiltredMeals(
+              meals.filter(
+                (meal) => meal.date === date.toISOString().substring(0, 10)
+              )
+            );
+          }}
+        >
+          &#10097;
+        </span>
       </Bar>
       <Bar lower>
         <div>
-          <h3>{total.kcals} kcal</h3>
+          <h3>
+            {filtredMeals.reduce((a, b) => {
+              return a + parseInt(b.kcals);
+            }, 0)}{' '}
+            kcals / dzisiaj
+          </h3>
         </div>
       </Bar>
     </>
   );
 };
+const mapStateToProps = (state) => ({
+  date: state.date,
+  meals: state.meals.items,
+});
+const mapDispatchToProps = (dispatch) => ({
+  increase: () => dispatch(increase()),
+  decrease: () => dispatch(decrease()),
+});
 
-export default DateBar;
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Wrapper, PlusButton } from 'components';
 import {
   Navigation,
@@ -12,21 +12,30 @@ import {
 } from 'pages/Diet/components';
 import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
-import { useWindowSize } from 'data/hooks/useWindowSize';
-import { useArrowPress } from 'data/hooks/useArrowPress';
+import { useWindowSize } from 'hooks/useWindowSize';
 import { DESKTOP_WIDTH } from 'utils/constants';
+import { connect } from 'react-redux';
+import { increase, decrease } from 'actions/meals';
 
-const Diet = () => {
+const Diet = ({ meals, date }) => {
+  const [filtredMeals, setFiltredMeals] = useState([]);
+  useEffect(() => {
+    setFiltredMeals(
+      meals.filter((meal) => meal.date === date.toISOString().substring(0, 10))
+    );
+  }, [meals, date]);
   const size = useWindowSize();
-  useArrowPress();
 
   return (
     <>
-      <Navigation />
+      <Navigation
+        setFiltredMeals={setFiltredMeals}
+        filtredMeals={filtredMeals}
+      />
       {size.width <= DESKTOP_WIDTH ? (
         <Wrapper>
-          <Chart />
-          <Meals />
+          <Chart filtredMeals={filtredMeals} />
+          <Meals filtredMeals={filtredMeals} />
           <Link to='/products'>
             <PlusButton>&#10010;</PlusButton>
           </Link>
@@ -34,8 +43,8 @@ const Diet = () => {
       ) : (
         <Wrapper>
           <section style={{ width: '50%' }}>
-            <Chart />
-            <Meals />
+            <Chart filtredMeals={filtredMeals} />
+            <Meals filtredMeals={filtredMeals} />
           </section>
           <section style={{ width: '30%' }}>
             <Products />
@@ -57,13 +66,13 @@ const Diet = () => {
         </Route>
 
         <Route exact path='/form-amount'>
-          <Modal small>
+          <Modal>
             <FormAmount />
           </Modal>
         </Route>
 
         <Route path='/edit-amount'>
-          <Modal small>
+          <Modal>
             <FormEditAmount />
           </Modal>
         </Route>
@@ -77,4 +86,12 @@ const Diet = () => {
   );
 };
 
-export default Diet;
+const mapStateToProps = (state) => ({
+  meals: state.meals.items,
+  date: state.date,
+});
+const mapDispatchToProps = (dispatch) => ({
+  increase: () => dispatch(increase()),
+  decrease: () => dispatch(decrease()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Diet);

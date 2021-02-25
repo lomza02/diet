@@ -1,6 +1,6 @@
-const getTotalDailyValues = (mealsWithDetails) => {
+const getTotalDailyValues = (meals) => {
   const getValue = (key) => {
-    const value = mealsWithDetails.reduce(
+    const value = meals.reduce(
       (previousValue, currentValue) => previousValue + currentValue[key],
       0
     );

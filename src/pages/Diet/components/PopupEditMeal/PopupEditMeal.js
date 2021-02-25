@@ -1,26 +1,17 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Button } from 'components';
 import { useHistory } from 'react-router-dom';
-import DataContextHandler from 'data/context';
-import { useMutation } from 'react-query';
-import API from 'data/fetch';
+import { connect } from 'react-redux';
+import { remove, select } from 'actions/meals';
 
-const PopupEditMeal = () => {
+const PopupEditMeal = ({ remove, selected, select }) => {
   const history = useHistory();
-  const { store } = DataContextHandler;
-  const data = useContext(store);
-  const { selectedMeal } = data;
-  const [mutate] = useMutation(API.removeMeal, {
-    refetchQueries: ['meals'],
-  });
-  const handleRemoveMeal = useCallback(async () => {
-    try {
-      await mutate(selectedMeal);
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  }, [selectedMeal, mutate, history]);
+
+  const handleRemoveMeal = useCallback(() => {
+    remove(selected);
+    history.push('/');
+    select(null);
+  }, [history, remove, selected, select]);
   const handleEditMeal = () => {
     history.push('/edit-amount');
   };
@@ -34,4 +25,13 @@ const PopupEditMeal = () => {
   );
 };
 
-export default PopupEditMeal;
+const mapDispatchToProps = (dispatch) => ({
+  remove: (id) => dispatch(remove(id)),
+  select: (id) => dispatch(select(id)),
+});
+
+const mapStateToProps = (state) => ({
+  selected: state.meals.selected,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PopupEditMeal);

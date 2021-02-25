@@ -1,4 +1,4 @@
-export default (date) => {
+const formatDate = (date) => {
   const months = [
     'Styczeń',
     'Luty',
@@ -35,3 +35,5 @@ export default (date) => {
     year,
   };
 };
+
+export default formatDate;

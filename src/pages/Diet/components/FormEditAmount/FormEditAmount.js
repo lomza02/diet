@@ -1,36 +1,26 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Form, InputWrapper, ErrMsg, Label, Input } from 'components';
 import { Button, ButtonWrapper } from 'components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import { useMutation } from 'react-query';
-import API from 'data/fetch';
-import DataContextHandler from 'data/context/';
+import { connect } from 'react-redux';
+import { edit } from 'actions/meals';
 
 const schema = yup.object().shape({
   amount: yup.number().positive().required(),
 });
 
-const FormEditAmount = () => {
+const FormEditAmount = ({ edit, selected, meals }) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-  const { store } = DataContextHandler;
-  const data = useContext(store);
-  const { selectedMeal } = data;
-  const [mutate] = useMutation(API.editMeal, {
-    refetchQueries: ['meals'],
-  });
+
   const history = useHistory();
-  const onSubmit = async (values) => {
-    try {
-      await mutate({ values, _id: selectedMeal });
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
+  const onSubmit = (data) => {
+    edit(selected, data.amount, meals);
+    history.push('/');
   };
   const handleGoBack = () => {
     history.goBack();
@@ -51,5 +41,12 @@ const FormEditAmount = () => {
     </>
   );
 };
+const mapDispatchToProps = (dispatch) => ({
+  edit: (id, amount, products) => dispatch(edit(id, amount, products)),
+});
+const mapStateToProps = (state) => ({
+  selected: state.meals.selected,
+  meals: state.meals.items,
+});
 
-export default FormEditAmount;
+export default connect(mapStateToProps, mapDispatchToProps)(FormEditAmount);

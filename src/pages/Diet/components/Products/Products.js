@@ -26,9 +26,7 @@ const Products = ({ products, remove, select }) => {
     const inputValue = input.current.value.toLowerCase();
     const filtredProductsArray = products.filter((product) => {
       const productToLowerCase = product.name.toLowerCase();
-      return (
-        productToLowerCase.includes(inputValue) && product.hidden === false
-      );
+      return productToLowerCase.includes(inputValue);
     });
     setFiltredProducts(filtredProductsArray);
   };
